@@ -3,12 +3,12 @@
 import { } from './lib/index.js';
 import { home } from './template.js';
 
-const router = async() => {
-    console.log('Hola, mundo')
-    const homeViewHTML = document.getElementById("root");
-    let view = home();
-    console.log(view)
-    homeViewHTML.innerHTML = await (view);
-}
+const router = async () => {
+  console.log('Hola, mundo');
+  const homeViewHTML = document.getElementById('root');
+  const view = home();
+  console.log(view);
+  homeViewHTML.innerHTML = await (view);
+};
 
-window.addEventListener('load', router)
+window.addEventListener('load', router);

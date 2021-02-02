@@ -1,0 +1,13 @@
+body{
+
+    background-color: blueviolet;
+}
+
+#root{
+    outline:2px solid black;
+    display: block;
+    margin: auto auto;
+    text-align: center;
+    width: 90%;
+    height: 90%;
+}

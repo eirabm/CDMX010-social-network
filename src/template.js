@@ -1,5 +1,5 @@
 export const home = () => {
-    const homeView = `
+  const homeView = `
     <div class= "homeWelcome-header-container">
         <figure>
             <img src="" alt="">
@@ -24,5 +24,5 @@ export const home = () => {
         <p>Regístrate aquí</p>
     </div>
     `;
-    return homeView;
-}
+  return homeView;
+};
