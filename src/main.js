@@ -1,14 +1,14 @@
 // Este es el punto de entrada de tu aplicacion
 
 import { } from './lib/index.js';
-import { home } from './template.js';
+import { homeWelcome } from './homeWelcome.js';
 
-const router = async () => {
-  console.log('Hola, mundo');
+//  Muestra, imprime o renderiza el componente de la primera página cuando ésta carga
+const render = async () => {
   const homeViewHTML = document.getElementById('root');
-  const view = home();
-  console.log(view);
+  const view = homeWelcome();
   homeViewHTML.innerHTML = await (view);
+  console.log(document.forms['logInForm']);
 };
 
-window.addEventListener('load', router);
+window.addEventListener('load', render);
