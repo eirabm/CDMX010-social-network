@@ -1,0 +1,15 @@
+.homeWelcome-info-container {
+    background-position: 50% 0%;
+    transform: scaleX(-1);
+}
+
+.homeWelcome-info-container--background {
+    flex-direction: row;
+    background-position: 70% 0%;
+    transform: scaleX(-1);
+    background-color: rgba(142, 149, 97, 0.5);
+}
+
+.homeWelcome-main-container {
+    background-color: #8E9561;
+}
