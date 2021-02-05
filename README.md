@@ -3,7 +3,7 @@
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
+* [2. Usuario objetivo](#2-usuario-objetivo)
 * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
 * [4. Consideraciones generales](#4-consideraciones-generales)
 * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
@@ -24,16 +24,14 @@ investigaciones, comentar en los artículos de sus colegas, y filtrar artículos
 de acuerdo a determinadas etiquetas o su popularidad, lo más reciente, o lo
 más comentado.
 
-## 2. Resumen del proyecto
+## 2. Usuario objetivo
 
-En este proyecto construirás una Red Social sobre lo que decidan tú y tu equipo.
-Podría ser, por ejemplo, sobre alimentación saludable, feminismo, educación,
-salud, energías renovables, amantes de las [Empanadas](https://es.wikipedia.org/wiki/Empanada)
-o de los [Tacos de Canasta](https://es.wikipedia.org/wiki/Taco), de la
-[Feijoada](https://es.wikipedia.org/wiki/Feijoada), o de lo que sea.
+Nuestra app está diseñada para todas aquellas personas amantes de la cocina y con alma de cheffs. Para todos aquellos que transforman su cocina en un laboratorio en donde experimentar y crear delicias con nuevos sabores. No se necesita ser un experto para ser parte de la comunidad, pues aquí se pueden compartir recetas, tips y los secretos culinarios más sofisticados (los de la abuela también cuentan).
 
-Tu Red Social tendrá que permitir a cualquier usuario crear una cuenta de
-acceso y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
+Para el diseño y experiencia de la app, pensamos en un User persona:
+
+
+
 
 ## 3. Objetivos de aprendizaje
 
