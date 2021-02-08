@@ -1,20 +1,20 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html{
-    font-size: 62.5%;
+html {
+  font-size: 62.5%;
 }
 
 :root {
-    --purple: #897678;
-    --light-purple: #CEC1C3;
-    --green: #94AA6B;
-    --light-green: #9CAE79;
-    --dark-green: #8E9561;
-    --orange: #F1A545;
+  --purple: #897678;
+  --light-purple: #cec1c3;
+  --green: #94aa6b;
+  --light-green: #9cae79;
+  --dark-green: #8e9561;
+  --orange: #f1a545;
 }
 
 .homeWelcome-info-container {
@@ -29,22 +29,22 @@ html{
 }
 
 .homeWelcome-info-container--background {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(206, 192, 194, 0.5)/* rgba(243, 243, 243,0.5)*/;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(206, 192, 194, 0.5) /* rgba(243, 243, 243,0.5)*/;
 }
 
 .homeWelcome-header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30%;
 }
 
 .homeWelcome-header-container figure {
@@ -55,22 +55,22 @@ html{
 }
 
 .homeWelcome-header-container figure img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .homeWelcome-header-container .homeWelcome-header_slogan {
-    font-family: 'Cookie', cursive;
-    font-size: 2.5rem;
-    font-weight: normal;
+  font-family: "Cookie", cursive;
+  font-size: 2.5rem;
+  font-weight: normal;
 }
 
 .homeWelcome-header-container p {
-    text-align: center;
-    padding: 1%;
-    font-family: 'Cormorant Infant', serif;
-    font-size: 1.5rem;
-    font-weight: bold;
+  text-align: center;
+  padding: 1%;
+  font-family: "Cormorant Infant", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .homeWelcome-main-container {
@@ -89,37 +89,38 @@ html{
 }
 
 .homeWelcome-main-container figure {
-    display:none;
+  display: none;
 }
 
 .homeWelcome-main-form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .homeWelcome-main-container form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.homeWelcome-main-container label, .homeWelcome-main-container p {
-    font-family: 'Cormorant Infant', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
+.homeWelcome-main-container label,
+.homeWelcome-main-container p {
+  font-family: "Cormorant Infant", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .homeWelcome-main-container input {
-    width: 200px;
-    height: 20px;
-    margin-bottom: 5px;
-    background-color: var(--light-purple);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 20px;
+  margin-bottom: 5px;
+  background-color: var(--light-purple);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
 .homeWelcome-main-form button {
@@ -135,30 +136,30 @@ html{
 }
 
 .homeWelcome-main-container button a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .homeWelcome-main-container .homeWelcome-main--invitation {
-    color: white;
-    font-weight: 50;
-    font-size: 1.2rem;
+  color: white;
+  font-weight: 50;
+  font-size: 1.2rem;
 }
 
 .homeWelcome-main--icons-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    width: 60%;
-    padding: 3%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 60%;
+  padding: 3%;
 }
 
 .homeWelcome-main--icons-container p {
-    width: 100%;
-    margin: 5%;
-    text-align: center;
-    font-size: 1.5rem;
+  width: 100%;
+  margin: 5%;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .homeWelcome-main--signUp {
