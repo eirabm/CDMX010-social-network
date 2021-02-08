@@ -20,6 +20,7 @@ html{
 .homeWelcome-info-container {
     width: 100%;
     height: 100%;
+    position: absolute;
     background-image: url('https://user-images.githubusercontent.com/75234502/106777197-624f4380-660a-11eb-9cc2-ef5ed87b60d7.jpg');
     background-position: center center;
     background-repeat:no-repeat;
@@ -47,9 +48,10 @@ html{
 }
 
 .homeWelcome-header-container figure {
-    width: 45%;
-    height:45%;
-    margin-top: 5%;
+    width: 35%;
+    /*height: 35%;*/
+    min-width: 200px;
+    margin-top: 19%;
 }
 
 .homeWelcome-header-container figure img {
@@ -83,7 +85,7 @@ html{
     background-color: var(--purple);
     border-radius: 5px;
     border: var(--purple) 10px solid;
-    box-shadow: inset 0 0 0 2px var(--orange);
+    box-shadow: inset 0 0 0 2px var(--green);
 }
 
 .homeWelcome-main-container figure {
@@ -120,7 +122,8 @@ html{
     box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
-.homeWelcome-main-container button {
+.homeWelcome-main-form button {
+    align-self: center;
     width: 90px;
     margin-top: 5%;
     font-family: 'Cookie', cursive;
@@ -159,10 +162,47 @@ html{
 }
 
 .homeWelcome-main--signUp {
+    margin: 5%;
     text-decoration: none;
     font-family: 'Cormorant Infant', serif;
     font-size: 1.3rem;
     color: white;
+}
+
+.main-error404 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(206, 192, 194, 0.5);
+}
+
+.main-error404-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8%;
+    width: 80%;
+}
+
+.main-error404-icon img {
+    width: 60%;
+    max-width: 300px;
+    height: 100%;
+    justify-self: center;
+}
+
+.main-error404 p {
+    width: 60%;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 3%;
+    font-family: 'Cookie', cursive;
+    font-size: 7rem;
+    color: var(--purple);
 }
 
 
