@@ -1,24 +1,32 @@
-// import { } from './lib/index.js';
-import { homeWelcome } from './homeWelcome.js';
-import { singUp } from './singUp.js';
+//import { } from './lib/index.js';
+import { logIn } from './logIn.js';
+import { signUp } from './signUp.js';
 import { home } from './home.js';
-//  Muestra, imprime o renderiza el componente de la primera página cuando ésta carga
+import { error404 } from './error404.js';
+//import {routes} from './routes.js';
 
 const rootDiv = document.getElementById('root');
-const render = async () => {
-  const view = homeWelcome();
-  rootDiv.innerHTML = await (view);
-  router();
+//  Muestra, imprime o renderiza el componente de la primera página cuando ésta carga
+const render =  async () => {
+    let viewWelcome = logIn();
+    rootDiv.innerHTML = await (viewWelcome);
+    router();
 };
+
+//Renderiza las páginas de acuerdo al hash de cada página
 const routes = {
-  '#/signUp': singUp,
-  '#/': home,
-};
-function router() {
-  const route = location.hash;
-  if (Object.keys(routes).includes(route)) {
-    rootDiv.innerHTML = routes[route];
-  }
+    '#/signup/': signUp,
+    '#/': home,
 }
+
+function router() {
+    let route = location.hash;
+    if (Object.keys(routes).includes(route)) {
+        rootDiv.innerHTML = routes[route];
+    } else if (route != "") {
+        rootDiv.innerHTML = error404;
+    }
+}
+
 window.addEventListener('load', render);
-window.addEventListener("hashchange", render);
+window.addEventListener('hashchange', render);
