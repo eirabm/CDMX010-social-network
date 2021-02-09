@@ -18,6 +18,10 @@
   background-color: rgba(142, 149, 97, 0.5);
 }
 
+.homeWelcome-main-container button a {
+  font-size: 2rem;
+}
+
 .homeWelcome-header-container {
   display: flex;
   justify-content: flex-start;
@@ -43,7 +47,8 @@
   display: none;
 }
 
-.homeWelcome-main-container {
+.homeWelcome-main-container,
+.homeWelcome-main-signUp-container {
   background-color: var(--green);
   width: 80%;
   height: 850px;
@@ -61,20 +66,22 @@
 }
 
 .homeWelcome-main-container input {
-  background-color: var(--dark-green);
   width: 300px;
   height: 30px;
+  border-radius: 5px;
+  background-color: var(--dark-green);
 }
 
 .homeWelcome-main-container button {
   background-color: var(--orange);
-  width: 100px;
+  width: 150px;
+  height: 40px;
 }
 
 .homeWelcome-main-container label,
 .homeWelcome-main-container p {
   font-size: 2rem;
-  margin: 2%;
+  margin: 5%;
 }
 
 .homeWelcome-main-container a {
@@ -96,6 +103,11 @@
 
 .homeWelcome-main--signUp {
   margin: 20px;
+  font-size: 2rem;
+}
+
+.homeWelcome-main-form .signUpButton {
+  background-color: var(--orange);
   font-size: 2rem;
 }
 
