@@ -28,7 +28,7 @@ export const logIn = () => {
                         <a href="#logGmail"><img src="https://user-images.githubusercontent.com/75234502/106777436-9aef1d00-660a-11eb-965f-a0c88b46c7ff.png" alt="ícono Gmail"></a>
                     </div>
                     <p class= "homeWelcome-main--invitation">¿No eres miembro todavía?</p>
-                    <a href="#/signup/" class= "homeWelcome-main--signUp" id= "signUp">Regístrate aquí</a>
+                    <a href="#/signup/" class= "homeWelcome-main--signUp" id= "logIn">Regístrate aquí</a>
                 </div>
             </div>
         </div>
