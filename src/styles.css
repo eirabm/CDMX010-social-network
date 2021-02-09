@@ -55,8 +55,9 @@ html {
 }
 
 .homeWelcome-header-container figure img {
-  width: 100%;
-  height: 100%;
+  margin-top: 50px;
+  width: 90%;
+  height: 90%;
 }
 
 .homeWelcome-header-container .homeWelcome-header_slogan {
@@ -78,10 +79,10 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 90%;
+  width: 85%;
   height: 375px;
   padding: 10%;
-  margin: 5% 0;
+  margin: 15% 0;
   background-color: var(--purple);
   border-radius: 5px;
   border: var(--purple) 10px solid;
@@ -204,4 +205,60 @@ html {
   font-family: "Cookie", cursive;
   font-size: 7rem;
   color: var(--purple);
+}
+/*home*/
+
+header {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--green);
+  height: 50px;
+  width: 100%;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  background-color: var(--purple);
+  bottom: 0;
+}
+
+nav img {
+  display: flex;
+  height: 35px;
+}
+.chop {
+  position: absolute;
+  left: 10px;
+  height: 50px;
+}
+.menu {
+  height: 35px;
+  position: absolute;
+  right: 20px;
+}
+.perfil {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: var(--purple);
+  border-radius: 50%;
+  right: 70px;
+}
+.information-people,
+.tittle,
+.sub-tittle {
+  display: none;
+}
+
+article {
+  margin-top: 50px;
 }
