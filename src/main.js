@@ -11,7 +11,8 @@ const rootDiv = document.getElementById('root');
 const render =  async () => {
     let viewWelcome = logIn();
     rootDiv.innerHTML = await (viewWelcome);
-    router();
+    let route = location.hash;
+    router(route);
 };
 
 //Renderiza las páginas de acuerdo al hash de cada página
@@ -20,8 +21,7 @@ const routes = {
     '#/': home,
 }
 
-function router() {
-    let route = location.hash;
+function router(route) {
     if (Object.keys(routes).includes(route)) {
         rootDiv.innerHTML = routes[route]; //routes['#/signup']
     } else if (route != "") {
@@ -55,6 +55,7 @@ function createUser(email, password) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(result => {
             console.log('Revisar usuario en Firebase');
+            alert('Bienvenido a Chop, tu cuenta ha sido creada')
             //Esto debe de actualizar el nombre del usuario, pero no se en dónde revisarlo en Firebase
             /*result.user.updateProfile({
                 displayName: name
@@ -66,7 +67,9 @@ function createUser(email, password) {
             }
             //enviar un mensaje de verificación al usuario y redireccionarlo a nuestra página
             result.user.sendEmailVerification(config)
-            //Aquí va un mensaje de bienvenida y de verificación .then
+            .then(result => {
+                alert('Se te ha enviado un correo para que puedas verificar tu cuenta y acceder a nuestra app')
+            })
             .catch(error => {
                 console.log(error);
             })
@@ -76,13 +79,54 @@ function createUser(email, password) {
             console.error(error);
             console.log(error.code);
             //Esto es para crear mensaje de error para avisar al usuario en caso de que algo salga mal
-            /*if (error.code == 'auth/email-already-in-use')
+            //En este caso, avisa de que ya existe un usuario
+            if (error.code == 'auth/email-already-in-use')
             rootDiv.innerHTML = errorUserAlreadyExists;
             else {
                 console.log(error);
-            }*/
+                console.log(error.message);
+            }
         });
 }
+
+window.addEventListener('load', function() {
+        let logInButton = document.getElementById('logInButton');
+        let form = document.forms.logInForm;
+        console.log(form);
+        console.log(logInButton);
+        logInButton.addEventListener('click', function getUserInfo (event) {
+            event.preventDefault();
+            const email = form['logInEmail'].value;
+            const password = form['logInPassword'].value;
+            console.log(email);
+            console.log(password);
+            logInEmailPass(email, password);
+    })
+})
+
+function logInEmailPass (email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then (result => {
+        //evaluar si validó su correo
+        if(result.user.emailVerified) {
+            console.log("Usuario logueado");
+            let anclaRoute = document.getElementById('logIn').getAttribute("href");
+            console.log(anclaRoute);
+            router(anclaRoute);
+        }
+        else {
+            alert('Ups, no has verificado tu email, revisa tu correo y realiza el proceso de validación');
+            //para que no esté logueado aunque los datos sean correctos
+            firebase.auth().signOut();
+        }
+    })
+    .catch (error => {
+        console.log(error);
+    })
+
+}
+
+
 
 
 
