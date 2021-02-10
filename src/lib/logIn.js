@@ -19,7 +19,7 @@ export const logIn = () => {
                         <input type="email" name= "logInEmail" id= "logInEmail" placeholder= Email required>
                         <label for="logInPassword">Escribe tu contraseña</label>
                         <input type="password" name= "logInPassword" id= "logInPassword" placeholder= Password required>
-                        <button id="logInButton" type= "submit"><a href="#/" id="logIn">Iniciar sesión</a></button>
+                        <button id="logInButton"><a href="#/" id="logIn">Iniciar sesión</a></button>
                     </form>
                     <div class= "homeWelcome-main--icons-container">
                         <p>Acceder usando:</p>

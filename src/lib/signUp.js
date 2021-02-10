@@ -21,7 +21,7 @@ export const signUp = `
                     <input type="email" name= "signUpEmail" id= "signUpEmail" placeholder= Email required>
                     <label for="signUpPassword">Escribe tu contraseña</label>
                     <input type="password" name= "signUpPassword" id= "signUpPassword" placeholder= Password required>
-                    <input class="signUpButton" id="signUpButton" type= "button" href="#">
+                    <input class="signUpButton" id="signUpButton" type= "submit" href="#/">
                 </form>
             </div>
         </div>
