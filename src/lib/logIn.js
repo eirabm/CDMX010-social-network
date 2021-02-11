@@ -1,5 +1,5 @@
 export const logIn = () => {
-    const logIn = `
+    return `
     <div class= "homeWelcome-info-container">
         <div class= "homeWelcome-info-container--background">
             <div class= "homeWelcome-header-container">
@@ -14,12 +14,13 @@ export const logIn = () => {
                     <img src="https://user-images.githubusercontent.com/75234502/106777987-1d77dc80-660b-11eb-8d01-191b02855d50.png" alt="">
                 </figure>
                 <div class= "homeWelcome-main-form-container">
+                <p class="error--message" id="error--message">El usuario o contraseña son incorrectos, favor de verificarlos</p>
                     <form name="logInForm" class= "homeWelcome-main-form">
                         <label for="logInEmail">Escribe tu correo</label>
                         <input type="email" name= "logInEmail" id= "logInEmail" placeholder= Email required>
                         <label for="logInPassword">Escribe tu contraseña</label>
                         <input type="password" name= "logInPassword" id= "logInPassword" placeholder= Password required>
-                        <button id="logInButton" type= "submit"><a href="#/" id="logIn">Iniciar sesión</a></button>
+                        <button id="logInButton"><a href="#/" id="logIn">Iniciar sesión</a></button>
                     </form>
                     <div class= "homeWelcome-main--icons-container">
                         <p>Acceder usando:</p>
@@ -28,11 +29,10 @@ export const logIn = () => {
                         <a href="#logGmail"><img src="https://user-images.githubusercontent.com/75234502/106777436-9aef1d00-660a-11eb-965f-a0c88b46c7ff.png" alt="ícono Gmail"></a>
                     </div>
                     <p class= "homeWelcome-main--invitation">¿No eres miembro todavía?</p>
-                    <a href="#/signup/" class= "homeWelcome-main--signUp" id= "signUp">Regístrate aquí</a>
+                    <a href="#/signup/" class= "homeWelcome-main--signUp" id= "logIn">Regístrate aquí</a>
                 </div>
             </div>
         </div>
     </div>
-    `;
-    return logIn;
+    `
 };
