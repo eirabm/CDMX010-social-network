@@ -1,5 +1,4 @@
-export const logIn = () => {
-    return `
+export const logIn = () => { return `
     <div class= "homeWelcome-info-container">
         <div class= "homeWelcome-info-container--background">
             <div class= "homeWelcome-header-container">
@@ -26,7 +25,7 @@ export const logIn = () => {
                         <p>Acceder usando:</p>
                         <a href="#logFacebook"><img src="https://user-images.githubusercontent.com/75234502/106777351-890d7a00-660a-11eb-9dd0-274d161e7242.png" alt="ícono Facebook"></a>
                         <a href="#logInstagram"><img src="https://user-images.githubusercontent.com/75234502/106777620-c3771700-660a-11eb-9e26-e581a32440f3.png" alt="ícono Instagram"></a>
-                        <a href="#logGmail"><img src="https://user-images.githubusercontent.com/75234502/106777436-9aef1d00-660a-11eb-965f-a0c88b46c7ff.png" alt="ícono Gmail"></a>
+                        <a href="#logGmail" id="logInGoogle"><img src="https://user-images.githubusercontent.com/75234502/106777436-9aef1d00-660a-11eb-965f-a0c88b46c7ff.png" alt="ícono Gmail"></a>
                     </div>
                     <p class= "homeWelcome-main--invitation">¿No eres miembro todavía?</p>
                     <a href="#/signup/" class= "homeWelcome-main--signUp" id= "logIn">Regístrate aquí</a>
@@ -34,5 +33,5 @@ export const logIn = () => {
             </div>
         </div>
     </div>
-    `
+    `;
 };

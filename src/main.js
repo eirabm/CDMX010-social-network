@@ -33,28 +33,26 @@ window.addEventListener('load', render);
 window.addEventListener('hashchange', render);
 
 window.addEventListener('hashchange', function() {
+
     if (location.hash === '#/signup/') {
         let signUpButton = document.getElementById('signUpButton');
         let form = document.forms.signUpForm;
-        console.log(form);
         signUpButton.addEventListener('click', function getUserInfo (event) {
             event.preventDefault();
+            document.getElementById("error--message--signUp").style.display="none";
+
             const name = form['signUpName'].value;
             const email = form['signUpEmail'].value;
             const password = form['signUpPassword'].value;
-            console.log(name);
-            console.log(email);
-            console.log(password);
+
             createUser(email, password);
         });
     }
 })
 
 function createUser(email, password) {
-    console.log('Vamos a crear un usuario')
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(result => {
-            console.log('Revisar usuario en Firebase');
             alert('Bienvenido a Chop, tu cuenta ha sido creada')
             //Esto debe de actualizar el nombre del usuario, pero no se en dónde revisarlo en Firebase
             /*result.user.updateProfile({
@@ -76,32 +74,49 @@ function createUser(email, password) {
 
         })
         .catch(function (error) {
-            console.error(error);
             console.log(error.code);
             //Esto es para crear mensaje de error para avisar al usuario en caso de que algo salga mal
             //En este caso, avisa de que ya existe un usuario
             if (error.code == 'auth/email-already-in-use')
             document.getElementById("error--message--signUp").style.display="block";
             else {
-                console.log(error);
                 console.log(error.message);
             }
         });
 }
 
 window.addEventListener('load', function() {
+    document.getElementById("error--message").style.display="none";
+
         let logInButton = document.getElementById('logInButton');
-        let form = document.forms.logInForm;
-        console.log(form);
-        console.log(logInButton);
+        let form = document.forms.logInForm; 
         logInButton.addEventListener('click', function getUserInfo (event) {
             event.preventDefault();
             const email = form['logInEmail'].value;
             const password = form['logInPassword'].value;
-            console.log(email);
-            console.log(--password);
             logInEmailPass(email, password);
     })
+
+        let logInGoogleButton = document.getElementById("logInGoogle")
+        logInGoogleButton.addEventListener('click', function(){
+            let provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                let credential = result.credential;
+                let user = result.user;
+
+                let accessToken = credential.accessToken;
+            })  }).catch((error) => {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                console.log(errorCode, errorMessage, email, credential)
+              });
+        
 })
 
 function logInEmailPass (email, password) {
