@@ -14,7 +14,7 @@ export const home = () => {
             <p>Escribe tu correo</p>
             <input type="text">
             <p>Escribe tu contraseña</p>
-            <input type="text">
+            <input type="password">
         </form>
         <button>Log in</button>
         <img src="" alt="">
