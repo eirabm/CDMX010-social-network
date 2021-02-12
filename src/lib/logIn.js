@@ -35,4 +35,3 @@ export const logIn = `
         </div>
     </div>
     `;
-

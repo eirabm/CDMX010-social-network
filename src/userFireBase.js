@@ -54,7 +54,7 @@ export const logInEmailPass = (email, password) => {
       console.log(error);
       if (error.code === 'auth/user-not-found') {
         alert('Usuario no encontrado');
-        document.getElementById("error--message").style.display="block";
+        document.getElementById('error--message').style.display = 'block';
       }
     });
 };
@@ -72,25 +72,25 @@ export const authGitHub = () => {
 };
 
 export const authGoogle = () => {
-  let provider = new firebase.auth.GoogleAuthProvider();
+  const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
-  .then((result) => {
-    let credential = result.credential;
-    let user = result.user;
-    let accessToken = credential.accessToken;
-    console.log(credential, user, accessToken);
-    window.location.hash = '#/';
-  })
-  .catch((error) => {
+    .then((result) => {
+      const credential = result.credential;
+      const user = result.user;
+      const accessToken = credential.accessToken;
+      console.log(credential, user, accessToken);
+      window.location.hash = '#/';
+})
+    .catch((error) => {
     // Handle Errors here.
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    // The email of the user's account used.
-    let email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    let credential = error.credential;
-    console.log(errorCode, errorMessage, email, credential)
-  });
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+      console.log(errorCode, errorMessage, email, credential)
+    });
 };
 
 export const authFacebook = () => {
@@ -108,7 +108,7 @@ export const authFacebook = () => {
       const accessToken = credential.accessToken;
       console.log(accessToken);
       console.log(result);
-      window.location.hash = "#/";
+      window.location.hash = '#/';
     })
     .catch((error) => {
     // Handle Errors here.
@@ -123,4 +123,4 @@ export const authFacebook = () => {
       const credential = error.credential;
       // console.log(credential);
     });
-}
+};
