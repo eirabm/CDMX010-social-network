@@ -13,6 +13,7 @@ export const signUp = `
                 <img src="https://user-images.githubusercontent.com/75234502/106777987-1d77dc80-660b-11eb-8d01-191b02855d50.png" alt="">
             </figure>
             <div class= "homeWelcome-main-formSignUp-container">
+            <p class="error--message" id="error--message--signUp">¡Este email ya está registrado!</p>
                 <p> Únete ahora </p> <br>
                 <form action="#" onsubmit="return false" name="signUpForm" class= "homeWelcome-main-form">
                     <label for="userName">Escribe tu nombre</label>

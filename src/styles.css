@@ -315,8 +315,10 @@ article {
   margin-top: 50px;
 }
 
-
-
+.error--message{
+  display:none;
+  color:red;
+}
 
 
 

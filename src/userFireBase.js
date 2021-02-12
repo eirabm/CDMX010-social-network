@@ -29,6 +29,7 @@ export const createUser = (email, password) => {
       //  En este caso, avisa de que ya existe un usuario
       if (error.code === 'auth/email-already-in-use') {
         console.log(error);
+        document.getElementById("error--message--signUp").style.display="block";
       } else {
         console.log(error);
         console.log(error.message);
@@ -53,6 +54,7 @@ export const logInEmailPass = (email, password) => {
       console.log(error);
       if (error.code === 'auth/user-not-found') {
         alert('Usuario no encontrado');
+        document.getElementById("error--message").style.display="block";
       }
     });
 };
@@ -67,4 +69,26 @@ export const authGitHub = () => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const authGoogle = () => {
+  let provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+  .then((result) => {
+    let credential = result.credential;
+    let user = result.user;
+    let accessToken = credential.accessToken;
+    console.log(credential, user, accessToken);
+    window.location.hash = '#/';
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    // The email of the user's account used.
+    let email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    let credential = error.credential;
+    console.log(errorCode, errorMessage, email, credential)
+  });
 };
