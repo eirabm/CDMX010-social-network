@@ -48,15 +48,16 @@ html {
 }
 
 .homeWelcome-header-container figure {
-    width: 35%;
-    /*height: 35%;*/
-    min-width: 200px;
-    margin-top: 19%;
+  width: 35%;
+  /*height: 35%;*/
+  min-width: 200px;
+  margin-top: 19%;
 }
 
 .homeWelcome-header-container figure img {
-  width: 100%;
-  height: 100%;
+  margin-top: 50px;
+  width: 90%;
+  height: 90%;
 }
 
 .homeWelcome-header-container .homeWelcome-header_slogan {
@@ -128,6 +129,20 @@ html {
   margin-bottom: 5px;
   background-color: var(--light-purple);
   border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.homeWelcome-main-form button {
+  align-self: center;
+  width: 90px;
+  margin-top: 5%;
+  font-family: "Cookie", cursive;
+  font-size: 1.6rem;
+  background-color: var(--light-green);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
 }
@@ -159,10 +174,6 @@ html {
   text-decoration: none;
   font-size: 1.5rem;
 }
-
-/*.homeWelcome-main-form input::placeholder {
-  text-align: center;
-}*/
 
 .homeWelcome-main-container .homeWelcome-main--invitation {
   color: white;
@@ -287,6 +298,7 @@ nav img {
   /*display: flex;*/
   height: 35px;
 }
+
 .chop {
   position: absolute;
   left: 10px;
@@ -320,8 +332,40 @@ article {
   color:red;
 }
 
+.modal{
+position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: black;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.35s ease-in;
+}
 
+.modal-dialog {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: var(--white);
+  overflow: auto;
+  cursor: default;
+}
 
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
 
+}
 
-
+#error-verificacion{
+  display: none;
+  color:red;
+}

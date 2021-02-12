@@ -92,3 +92,35 @@ export const authGoogle = () => {
     console.log(errorCode, errorMessage, email, credential)
   });
 };
+
+export const authFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+    /* @type {firebase.auth.OAuthCredential} */
+      const credential = result.credential;
+      // The signed-in user info.
+      const user = result.user;
+      const name = result.displayName;
+      console.log(name);
+      console.log(user);
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const accessToken = credential.accessToken;
+      console.log(accessToken);
+      console.log(result);
+      window.location.hash = "#/";
+    })
+    .catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      // console.log(errorCode);
+      const errorMessage = error.message;
+      // console.log(errorMessage);
+      // The email of the user's account used.
+      const email = error.email;
+      // console.log(email);
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+      // console.log(credential);
+    });
+}
