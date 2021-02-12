@@ -1,4 +1,12 @@
 {
+<<<<<<< HEAD
     "liveServer.settings.port": 5501,
     "eslint.alwaysShowStatus": true
+=======
+<<<<<<< HEAD
+  "liveServer.settings.port": 5501
+=======
+    "liveServer.settings.port": 5501
+>>>>>>> 7359055992314993cb84e9c23534cbab22132a8e
+>>>>>>> 13fbd73cab3554cce858a3acfde14dd3981916e3
 }
