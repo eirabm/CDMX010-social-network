@@ -1,5 +1,4 @@
-export const logIn = () => {
-  const logIn = `
+export const logIn = `
     <div class= "homeWelcome-info-container">
         <div class= "homeWelcome-info-container--background">
             <div class= "homeWelcome-header-container">
@@ -19,11 +18,12 @@ export const logIn = () => {
                         <input type="email" name= "logInEmail" id= "logInEmail" placeholder= Email required>
                         <label for="logInPassword">Escribe tu contraseña</label>
                         <input type="password" name= "logInPassword" id= "logInPassword" placeholder= Password required>
+                        <p id="error-verificacion">No has verificado tu correo</p>
                         <button id="logInButton"><a href="#/" id="logIn">Iniciar sesión</a></button>
                     </form>
                     <div class= "homeWelcome-main--icons-container">
                         <p>Acceder usando:</p>
-                        <a href="#logFacebook"><img src="https://user-images.githubusercontent.com/75234502/106777351-890d7a00-660a-11eb-9dd0-274d161e7242.png" alt="ícono Facebook"></a>
+                        <a href="#facebook/"><img id="facebook" src="https://user-images.githubusercontent.com/75234502/106777351-890d7a00-660a-11eb-9dd0-274d161e7242.png" alt="ícono Facebook"></a>
                         <a href="#logInstagram"><img src="https://user-images.githubusercontent.com/75234502/106777620-c3771700-660a-11eb-9e26-e581a32440f3.png" alt="ícono Instagram"></a>
                         <a href="#logGmail"><img src="https://user-images.githubusercontent.com/75234502/106777436-9aef1d00-660a-11eb-965f-a0c88b46c7ff.png" alt="ícono Gmail"></a>
                     </div>
@@ -34,5 +34,3 @@ export const logIn = () => {
         </div>
     </div>
     `;
-    return logIn;
-};
