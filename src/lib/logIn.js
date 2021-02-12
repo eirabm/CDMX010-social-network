@@ -1,4 +1,4 @@
-export const logIn =`
+export const logIn = `
     <div class= "homeWelcome-info-container">
         <div class= "homeWelcome-info-container--background">
             <div class= "homeWelcome-header-container">
@@ -34,4 +34,3 @@ export const logIn =`
         </div>
     </div>
     `;
-};
