@@ -16,12 +16,11 @@ export const home = `
     <img class="home" src="./icons/home-solid.svg" alt="">
     <img class="add" src="./icons/plus-circle-solid.svg" alt="">
   </nav>
-  
   <section>
   <article class="information-people">
-    <div>
+    <figure>
       <img src="" alt="">
-    </div>
+    </figure>
     <div>
       <h2>Nombre del usuario</h2>
     </div>
@@ -33,7 +32,7 @@ export const home = `
     </ul>
   </article>
   <article>
- <h2>post</h2>
+  <h2>post</h2>
   </article>
   </section>
 `;

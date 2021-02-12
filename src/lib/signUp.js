@@ -15,9 +15,9 @@ export const signUp = `
             <div class= "homeWelcome-main-formSignUp-container">
             <p class="error--message" id="error--message--signUp">¡Este email ya está registrado!</p>
                 <p> Únete ahora </p> <br>
-                <form name="signUpForm" class= "homeWelcome-main-form">
+                <form action="#" onsubmit="return false" name="signUpForm" class= "homeWelcome-main-form">
                     <label for="userName">Escribe tu nombre</label>
-                    <input type="text" name="signUpName" id="userName" placeholder= Nombre de usuario>
+                    <input type="text" name="signUpName" id="userName" placeholder= Nombre de usuario required>
                     <label for="signUpEmail">Escribe tu correo</label>
                     <input type="email" name= "signUpEmail" id= "signUpEmail" placeholder= Email required>
                     <label for="signUpPassword">Escribe tu contraseña</label>
