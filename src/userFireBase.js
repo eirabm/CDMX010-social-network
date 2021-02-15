@@ -29,7 +29,7 @@ export const createUser = (email, password) => {
       //  En este caso, avisa de que ya existe un usuario
       if (error.code === 'auth/email-already-in-use') {
         console.log(error);
-        document.getElementById("error--message--signUp").style.display="block";
+        document.getElementById('error--message--signUp').style.display = 'block';
       } else {
         console.log(error);
         console.log(error.message);

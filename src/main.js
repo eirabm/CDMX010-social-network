@@ -1,9 +1,15 @@
 import { logIn } from './lib/logIn.js';
 import { home } from './lib/home.js';
-import { errorUserAlreadyExists } from './lib/errorUserExists.js';
+// import { errorUserAlreadyExists } from './lib/errorUserExists.js';
 import { signUp } from './lib/signUp.js';
 import { error404 } from './lib/error404.js';
-import { createUser, logInEmailPass, authGitHub, authGoogle, authFacebook } from './userFireBase.js';
+import {
+  createUser,
+  logInEmailPass,
+  authGitHub,
+  authGoogle,
+  authFacebook,
+} from './userFireBase.js';
 
 const rootDiv = document.getElementById('root');
 // Renderiza las páginas de acuerdo al hash de cada página
@@ -20,12 +26,31 @@ function router() {
     rootDiv.innerHTML = error404;
   }
 }
+
+function menu() {
+  const menuu = document.getElementById('open');
+  console.log(menuu);
+  if (menuu.classList.contains('disable-menu-desplegable')) {
+    menuu.classList.remove('disable-menu-desplegable');
+    menuu.classList.add('enable-menu-desplegable');
+  } else {
+    menuu.classList.remove('enable-menu-desplegable');
+    menuu.classList.add('disable-menu-desplegable');
+  }
+}
+function showMenu() {
+  const btnMenu = document.getElementById('btn-menu');
+  console.log(btnMenu);
+  btnMenu.addEventListener('click', menu);
+}
+
 //  Muestra, imprime o renderiza el componente de la primera página cuando ésta carga
 const render = async () => {
   const viewWelcome = logIn;
   rootDiv.innerHTML = await (viewWelcome);
   const route = window.location.hash;
   router(route);
+  showMenu();
 };
 
 const logInData = () => {
@@ -63,6 +88,7 @@ const getElements = () => {
     signUpData();
   }
 };
+
 
 window.addEventListener('load', render);
 window.addEventListener('hashchange', render);
