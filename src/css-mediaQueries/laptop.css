@@ -203,3 +203,7 @@ section {
   text-align: center;
   width: 100%;
 }
+
+.enable-menu-desplegable{
+  display: none;
+}

@@ -9,13 +9,21 @@ export const home = `
       </div>
     <div class="perfil" id="id">
     </div>
-    <img class="menu" src="./icons/bars-solid.svg" alt="">
+    <img id="btn-menu" class="menu" src="./icons/bars-solid.svg" alt="">
   </header>
   <nav>
     <img class="search" src="./icons/search-solid.svg" alt="">
     <img class="home" src="./icons/home-solid.svg" alt="">
     <img class="add" src="./icons/plus-circle-solid.svg" alt="">
   </nav>
+  <div id="open" class="disable-menu-desplegable">
+  <ul>
+   <li>Mi perfil</li>
+    <li>Mis post</li>
+    <li>Mis likes</li>
+    <li>Salir</li>
+  </ul>
+  </div>
   <section>
   <article class="information-people">
     <figure>
