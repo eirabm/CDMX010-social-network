@@ -1,3 +1,8 @@
+.authPage-container {
+    display: flex;
+    flex-direction: column;
+  }
+
 .authPage-header-container {
     display: flex;
     flex-direction: column;
@@ -7,8 +12,8 @@
     height: 30%;
   }
   
-  .authPage_slogan{
-  font-family: 'Satisfy', cursive;
+  .authPage_slogan {
+    font-family: 'Satisfy', cursive;
     font-size: 2rem;
     font-weight: normal;
   }
@@ -36,14 +41,14 @@
   }
 
 .main-container-line {
-  box-sizing: border-box;
-  width: 100%;
-  border: solid #A23D3D;
-  padding: 2%;
-  border-radius: 12px;
+    box-sizing: border-box;
+    width: 100%;
+    border: solid #A23D3D;
+    padding: 2%;
+    border-radius: 12px;
 }
   
-  .logIn-form-container {
+.logIn-form-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -64,17 +69,17 @@
   }
 
 .logIn-form input {
-  width: 200px;
-  height: 20px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 6px;
-  box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+    width: 200px;
+    height: 20px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
 }
 
 .logIn-form label {
-  font-weight: bold;
-  margin: 2.5%;
+    font-weight: bold;
+    margin: 2.5%;
 }
   
 .accessButton {
@@ -91,8 +96,8 @@
   }
 
 .authPage-main-container img {
-  width: 46px;
-  margin-left: 20px;
+    width: 46px;
+    margin-left: 20px;
 }
 
 .go-signUp {
