@@ -25,6 +25,7 @@ function router() {
   } else if (hash !== '') {
     rootDiv.innerHTML = error404;
   }
+}
 
 function menu() {
   const menuu = document.getElementById('open');

@@ -1,323 +1,125 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-html {
-  font-size: 62.5%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap'); 
+/*
+font-family: 'Satisfy', cursive;
+font-family: 'Roboto', sans-serif;
+*/
 
-:root {
-  --purple: #897678;
-  --light-purple: #cec1c3;
-  --green: #94aa6b;
-  --light-green: #9cae79;
-  --dark-green: #8e9561;
-  --orange: #f1a545;
-}
+.authPage-container {
+    display: flex;
+    flex-direction: column;
+  }
 
-.homeWelcome-info-container {
-<<<<<<< HEAD
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-image: url("https://user-images.githubusercontent.com/75234502/106777197-624f4380-660a-11eb-9cc2-ef5ed87b60d7.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-=======
+.authPage-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
-    position: absolute;
-    background-image: url('https://user-images.githubusercontent.com/75234502/106777197-624f4380-660a-11eb-9cc2-ef5ed87b60d7.jpg');
-    background-position: center center;
-    background-repeat:no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
-}
-
-.homeWelcome-info-container--background {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(206, 192, 194, 0.5) /* rgba(243, 243, 243,0.5)*/;
-}
-
-.homeWelcome-header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 30%;
-}
-
-.homeWelcome-header-container figure {
-  width: 35%;
-  /*height: 35%;*/
-  min-width: 200px;
-  margin-top: 19%;
-}
-
-.homeWelcome-header-container figure img {
-  margin-top: 50px;
-  width: 90%;
-  height: 90%;
-}
-
-.homeWelcome-header-container .homeWelcome-header_slogan {
-  font-family: "Cookie", cursive;
-  font-size: 2.5rem;
-  font-weight: normal;
-}
-
-.homeWelcome-header-container p {
-  text-align: center;
-  padding: 1%;
-  font-family: "Cormorant Infant", serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.homeWelcome-main-container {
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  width: 85%;
-  height: 375px;
-  padding: 10%;
-  margin: 15% 0;
-  background-color: var(--purple);
-  border-radius: 5px;
-  border: var(--purple) 10px solid;
-  box-shadow: inset 0 0 0 2px var(--green);
-=======
+    height: 30%;
+  }
+  
+  .authPage_slogan {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    font-weight: normal;
+  }
+  
+  .authPage-header-invite {
+    text-align: center;
+    padding: .5%;
+    margin-top: -1%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  
+  .authPage-main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 90%;
-    height: 375px;
-    padding: 10%;
-    margin: 5% 0;
-    background-color: var(--purple);
-    border-radius: 5px;
-    border: var(--purple) 10px solid;
-    box-shadow: inset 0 0 0 2px var(--green);
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
-}
+    font-family: 'Roboto', sans-serif;
+    border-radius: 12px;
+    background-color: #9EB1BF;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+    padding: 1.5%;
+    margin: 0% 3% 3%;
+  }
 
-.homeWelcome-main-container figure {
-  display: none;
+.main-container-line {
+    box-sizing: border-box;
+    width: 100%;
+    border: solid #A23D3D;
+    padding: 2%;
+    border-radius: 12px;
 }
-
-.homeWelcome-main-form-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.homeWelcome-main-formSignUp-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.homeWelcome-main-container form {
-  display: flex;
-  flex-direction: column;
-}
-
-.homeWelcome-main-container label,
-.homeWelcome-main-container p {
-  font-family: "Cormorant Infant", serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin: 2%;
-}
-
-.homeWelcome-main-container input {
-  width: 200px;
-  height: 20px;
-  margin-bottom: 5px;
-  background-color: var(--light-purple);
-<<<<<<< HEAD
-=======
-  border: none;
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
-  border-radius: 5px;
-  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
-}
-
-.homeWelcome-main-form button {
-  align-self: center;
-  width: 90px;
-  margin-top: 5%;
-  font-family: "Cookie", cursive;
-  font-size: 1.6rem;
-  background-color: var(--light-green);
-  border: none;
-  border-radius: 5px;
-  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
-<<<<<<< HEAD
   
-=======
-  border-radius: 3px;
-  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
-}
-
-.homeWelcome-main-form .signUpButton {
-  align-self: center;
-  width: 100px;
-  height: 25px;
-  margin: 5%;
-  background-color: var(--green);
-  font-family: 'Cookie', cursive;
-  font-size: 1.6rem;
-}
-
-.homeWelcome-main-form button {
-    align-self: center;
-    width: 90px;
-    height: 25px;
-    margin-top: 5%;
-    font-family: 'Cookie', cursive;
-    font-size: 1.6rem;
-    background-color: var(--light-green);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
-}
-
-.homeWelcome-main-container button a {
-  text-decoration: none;
-  font-size: 1.5rem;
-}
-
-.homeWelcome-main-container .homeWelcome-main--invitation {
-  color: white;
-  font-weight: 50;
-  font-size: 1.2rem;
-}
-
-.homeWelcome-main-formSignUp-container .homeWelcome-main-form .homeWelcome-main--signUp {
-  font-family: "Cookie", cursive;
-  color: black;
-}
-
-.homeWelcome-main--icons-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  width: 60%;
-  padding: 3%;
-}
-
-.homeWelcome-main--icons-container p {
-  width: 100%;
-  margin: 5%;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-<<<<<<< HEAD
-=======
-.homeWelcome-main--icons-container img {
-  width: 40px;
-  border-radius: 50px;
-  justify-self: flex-end;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
-.homeWelcome-main--signUp {
-    margin: 5%;
-    text-decoration: none;
-    font-family: 'Cormorant Infant', serif;
-    font-size: 1.3rem;
-    color: white;
-
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
-
-.main-error404 {
+.form-container {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    height: 100%;
     width: 100%;
-    background-color: rgba(206, 192, 194, 0.5);
-}
-
-.main-error404-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8%;
-    width: 80%;
-}
-
-.main-error404-icon img {
-    width: 60%;
-    max-width: 300px;
     height: 100%;
-    justify-self: center;
+  }
+  
+.error-message {
+    font-weight: bold;
+    color: #A23D3D;
+    display: none;
+  }
+  
+.form {
+    display: flex;
+    flex-direction: column;
+  }
+
+.join {
+    font-family: 'Satisfy', cursive;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-.main-error404 p {
-    width: 60%;
+.form input {
+    width: 200px;
+    height: 20px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
+
+.form label {
+    font-weight: bold;
+    margin: 2.5%;
+}
+  
+.accessButton {
+    font-family: 'Satisfy', cursive;
+    font-weight: bold;
     align-self: center;
-    text-align: center;
-    margin-bottom: 3%;
-    font-family: 'Cookie', cursive;
-    font-size: 7rem;
-    color: var(--purple);
+    width: 100px;
+    height: 25px;
+    margin: 5%;
+    border-radius: 8px;
+    border: none;
+    background-color: #FFFF33;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+  }
+
+.authPage-main-container img {
+    width: 46px;
+    margin-left: 20px;
 }
 
-.main-errorUserExists button {
-  width: 100px;
-  height: 30px;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--purple);
+.go-signUp {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.5rem;
+    color: #A23D3D;
 }
 
-.main-errorUserExists button a {
-  font-size: 2rem;
-  font-family: 'Cookie', cursive;
-  color: white;
-  text-decoration: none;
-}
 
-<<<<<<< HEAD
-
-.error--message{
-  display:none;
-  color:red;
-}
-=======
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
 /*home*/
 
 header {
@@ -329,9 +131,6 @@ header {
   height: 50px;
   width: 100%;
   top: 0;
-<<<<<<< HEAD
-
-=======
 >>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
 }
 
@@ -425,51 +224,4 @@ article {
 .enable-menu-desplegable ul li:active{
   background-color: var(--purple);
   color: white;
-} 
-
-.error--message{
-  display:none;
-  color:red;
-}
-
-.modal{
-position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  background: black;
-  cursor: pointer;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.35s ease-in;
-}
-
-.modal-dialog {
-  position: relative;
-  max-width: 800px;
-  max-height: 80vh;
-  border-radius: 5px;
-  background: var(--white);
-  overflow: auto;
-  cursor: default;
-}
-
-.modal.is-visible {
-  visibility: visible;
-  opacity: 1;
-
-}
-
-#error-verificacion{
-  display: none;
-  color:red;
-<<<<<<< HEAD
-
-=======
->>>>>>> 3530b273e4076ef76b4690a8f34905878afb8857
 }
