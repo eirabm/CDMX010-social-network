@@ -4,117 +4,32 @@ font-family: 'Satisfy', cursive;
 font-family: 'Roboto', sans-serif;
 */
 
-=======
-.authPage-container {
-    display: flex;
-    flex-direction: column;
-  }
+/* Pàgina de error */
 
-.authPage-header-container {
+.error404 {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    position: absolute;
     justify-content: center;
-    width: 100%;
-    height: 30%;
-  }
-  
-  .authPage_slogan {
-    font-family: 'Satisfy', cursive;
-    font-size: 2rem;
-    font-weight: normal;
-  }
-  
-  .authPage-header-invite {
-    text-align: center;
-    padding: .5%;
-    margin-top: -1%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: normal;
-  }
-  
-  .authPage-main-container {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 12px;
-    background-color: #9EB1BF;
-    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
-    padding: 1.5%;
-    margin: 0% 3% 3%;
-  }
-
-.main-container-line {
-    box-sizing: border-box;
-    width: 100%;
-    border: solid #A23D3D;
-    padding: 2%;
-    border-radius: 12px;
-}
-  
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
     height: 100%;
-  }
-  
-.error-message {
-    font-weight: bold;
-    color: #A23D3D;
-    display: none;
-  }
-  
-.form {
+    width: 100%;
+    background-color: rgba(206, 192, 194, 0.5);
+}
+
+.error404-icon {
     display: flex;
-    flex-direction: column;
-  }
-
-.join {
-    font-family: 'Satisfy', cursive;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.form input {
-    width: 200px;
-    height: 20px;
-    border: none;
-    border-radius: 4px;
-    margin-bottom: 6px;
-    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
-}
-
-.form label {
-    font-weight: bold;
-    margin: 2.5%;
-}
-  
-.accessButton {
-    font-family: 'Satisfy', cursive;
-    font-weight: bold;
-    align-self: center;
-    width: 100px;
-    height: 25px;
+    justify-content: center;
+    align-items: center;
     margin: 5%;
-    border-radius: 8px;
-    border: none;
-    background-color: #FFFF33;
-    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
-  }
-
-.authPage-main-container img {
-    width: 46px;
-    margin-left: 20px;
 }
 
-.go-signUp {
-    font-family: 'Satisfy', cursive;
-    font-size: 1.5rem;
-    color: #A23D3D;
+.error404 p {
+    width: 60%;
+    font-family: 'Roboto', sans-serif;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 3%;
+    font-family: 'Cookie', cursive;
+    font-size: 2.5rem;
 }
