@@ -48,7 +48,7 @@
     border-radius: 12px;
 }
   
-.logIn-form-container {
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -57,18 +57,24 @@
     height: 100%;
   }
   
-  .error-message {
+.error-message {
     font-weight: bold;
     color: #A23D3D;
     display: none;
   }
   
-  .logIn-form {
+.form {
     display: flex;
     flex-direction: column;
   }
 
-.logIn-form input {
+.join {
+    font-family: 'Satisfy', cursive;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.form input {
     width: 200px;
     height: 20px;
     border: none;
@@ -77,7 +83,7 @@
     box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
 }
 
-.logIn-form label {
+.form label {
     font-weight: bold;
     margin: 2.5%;
 }
