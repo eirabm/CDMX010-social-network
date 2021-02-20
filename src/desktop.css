@@ -3,3 +3,15 @@
 font-family: 'Satisfy', cursive;
 font-family: 'Roboto', sans-serif;
 */
+=======
+.authPage-container {
+    flex-direction: row;
+}
+
+.authPage-header-container {
+    width: 60%;
+}
+
+.authPage-main-container {
+    width: 40%;
+}
