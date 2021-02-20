@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap'); 
+/*
+font-family: 'Satisfy', cursive;
+font-family: 'Roboto', sans-serif;
+*/
+
 .authPage-container {
     display: flex;
     flex-direction: column;
