@@ -1,8 +1,7 @@
-import { logIn } from './lib/logIn.js';
+import { logIn, signUp } from './lib/authPages.js';
 import { home } from './lib/home.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
-import { signUp } from './lib/signUp.js';
-import { error404 } from './lib/error404.js';
+
 import {
   createUser,
   logInEmailPass,
@@ -22,8 +21,6 @@ function router() {
   const { hash } = window.location;
   if (Object.keys(routes).includes(hash)) {
     rootDiv.innerHTML = routes[hash]; // routes['#/signup']
-  } else if (hash !== '') {
-    rootDiv.innerHTML = error404;
   }
 }
 
