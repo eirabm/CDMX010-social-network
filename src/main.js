@@ -1,5 +1,5 @@
 import { logIn, signUp } from './lib/authPages.js';
-import { home } from './lib/home.js';
+import { homePage } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
 
 import {
@@ -14,7 +14,7 @@ const rootDiv = document.getElementById('root');
 // Renderiza las páginas de acuerdo al hash de cada página
 const routes = {
   '#/signup/': signUp,
-  '#/': home,
+  '#/': homePage,
 };
 //  Renderiza el componente de la primera página cuando ésta carga
 function router() {
@@ -85,7 +85,6 @@ const getElements = () => {
     signUpData();
   }
 };
-
 
 window.addEventListener('load', render);
 window.addEventListener('hashchange', render);
