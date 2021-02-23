@@ -124,3 +124,15 @@ export const authFacebook = () => {
       // console.log(credential);
     });
 };
+
+export const hasUserAuth = async () => {
+  const isAuthenticated = false;
+
+  // await firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     isAuthenticated = true;
+  //   }
+  // });
+
+  return isAuthenticated;
+}
