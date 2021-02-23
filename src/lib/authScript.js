@@ -49,7 +49,7 @@ export const authSN = () => {
       });
   });
 
-  const logInGoogleButton = document.getElementById('logInGoogle');
+  const logInGoogleButton = document.getElementById('logInGithub');
   logInGoogleButton.addEventListener('click', () => {
     console.log('estas re wey');
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -62,7 +62,7 @@ export const authSN = () => {
       });
   });
 
-  const btnFecebook = document.getElementById('logInFacebook');
+   const btnFecebook = document.getElementById('logInFacebook');
   btnFecebook.addEventListener('click', () => {
     const provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
@@ -72,12 +72,10 @@ export const authSN = () => {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }); 
 };
 
 export const logInEmailPass = () => {
-
-
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((result) => {
       //  evaluar si validó su correo

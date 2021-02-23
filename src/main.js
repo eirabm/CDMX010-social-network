@@ -13,6 +13,7 @@ const routes = {
 mainPage.innerHTML = authPage;
 
 const socialContainer = document.getElementById('social-container');
+console.log(socialContainer);
 socialContainer.addEventListener('click', authSN);
 
 const formSignUp = document.forms.signUpForm;
