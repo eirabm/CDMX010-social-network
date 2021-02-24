@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap'); 
+/*
+font-family: 'Satisfy', cursive;
+font-family: 'Roboto', sans-serif;
+*/
+
+/* logIn and signUp */
+.authPage-container {
+    display: flex;
+    flex-direction: column;
+  }
 
 *{
     box-sizing: border-box;
@@ -211,6 +221,35 @@ transform: translateX(100%);
     display: none;
 }
 
+/* Pàgina de error */
+.error404 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(206, 192, 194, 0.5);
+}
+
+.error404-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+
+.error404 p {
+    width: 60%;
+    font-family: 'Roboto', sans-serif;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 3%;
+    font-family: 'Cookie', cursive;
+    font-size: 2.5rem;
+}
+
 @media (max-width: 650px) {
  .container{
      position: inherit;
@@ -230,7 +269,8 @@ transform: translateX(100%);
  }
  .container.right-panel-active .sign-up-container{
     transform: translateX(0);
-    }
+ }
+}
 
 
 @media (max-width: 650px) {
@@ -253,4 +293,4 @@ transform: translateX(100%);
  .container.right-panel-active .sign-up-container{
     transform: translateX(0);
     }
-  }
+}
