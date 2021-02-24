@@ -38,13 +38,12 @@ function home() {
   const navTogglerBtn = document.querySelector('.nav-toggler');
   console.log(navTogglerBtn);
   const aside = document.querySelector('.aside');
+  const section = document.getElementById('section');
 
   navTogglerBtn.addEventListener('click', () => {
     aside.classList.toggle('open');
     navTogglerBtn.classList.toggle('open');
-    for (let i = 1; i < totalSection; i++) {
-      allSection[i] = classList.toggle('open');
-    }
+    section.classList.toggle('open');
   });
 }
 
@@ -63,7 +62,7 @@ const renderPage = async () => {
   let pathname = '/';
 
   if (!isAuthenticated) {
-    pathname = '/';
+    pathname = '/login';
   } else if (window.location.hash.length) {
     pathname = clearPathname(window.location.hash);
   }
@@ -79,7 +78,7 @@ window.addEventListener('hashchange', async () => {
 // cuando carge el sitio
 window.onload = async () => {
   await renderPage();
- primeraPag();
+  primeraPag();
 };
 
 const logInData = () => {
