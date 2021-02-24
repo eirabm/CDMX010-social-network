@@ -9,3 +9,7 @@
 .authPage-main-container {
     width: 40%;
 }
+
+#sign-up-mobile, #sign-in-mobile{
+    display: none;
+}
