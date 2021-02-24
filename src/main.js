@@ -16,19 +16,10 @@ const socialContainer = document.getElementById('social-container');
 socialContainer.addEventListener('click', authSN);
 
 const formSignUp = document.forms.signUpForm;
-formSignUp.addEventListener('submit', () => {
-  const name = formSignUp.signUpName.value;
-  const email = formSignUp.signUpEmail.value;
-  const password = formSignUp.signUpPassword.value;
-  signUp(email, password);
-});
+formSignUp.addEventListener('submit', signUp);
 
 const formLogIn = document.forms.logInForm;
-formLogIn.addEventListener('submit', () => {
-  const email = formLogIn.logInEmail.value;
-  const password = formLogIn.logInPassword.value;
-  logInEmail(email, password);
-});
+formLogIn.addEventListener('submit', logInEmail);
 
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');

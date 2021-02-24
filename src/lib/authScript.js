@@ -1,6 +1,11 @@
-export const signUp = (email, password) => {
+export const signUp = (e) => {
+  e.preventDefault();
+
   document.getElementById('verification').style.display = 'none';
   document.getElementById('already-user').style.display = 'none';
+
+  const email = signUpForm.signUpEmail.value;
+  const password = signUpForm.signUpPassword.value;
 
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
@@ -24,9 +29,13 @@ export const signUp = (email, password) => {
     });
 };
 
-export const logInEmail = (email, password) => {
+export const logInEmail = (e) => {
+  e.preventDefault();
   document.getElementById('error-verification').style.display = 'none';
   document.getElementById('user-not-found').style.display = 'none';
+
+  const email = logInForm.logInEmail.value;
+  const password = logInForm.logInPassword.value;
 
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((result) => {
