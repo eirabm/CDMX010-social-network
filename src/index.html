@@ -1,40 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="desktop.css" media="(min-width: 769px)">
-  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="desktop.css" media="(min-width: 769px)" />
+  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)" />
   <title>Document</title>
 </head>
-  <body>
-    <main>
-      <div id="root"></div>
-    </main>
-    
- <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+<body>
+  <main>
+    <div id="login-container"></div>
+
+    <div class="main-container none" id="contenido">
+      <!--aside-->
+      <div class="aside" id="menu">
+        <!--lago-->
+        <div class="logo" id="logotipo">
+          <a href="#">
+            <img
+              src="https://user-images.githubusercontent.com/66543426/108759709-515f6700-7512-11eb-95fa-03b759694a1a.png""
+              alt="" /></a>
+        </div>
+        <div class="nav-toggler" id="icono-menu">
+          <span></span>
+        </div>
+        <ul class="nav" id="navegador">
+          <li>
+            <a href="#/" class="active"><i class="fa fa-home"></i>Inicio</a>
+          </li>
+          <li>
+            <a href="#/perfil"><i class="fas fa-user"></i>Perfil</a>
+          </li>
+          <li>
+            <a href="#agregar/"><i class="far fa-plus-square"></i>Agregar receta</a>
+          </li>
+          <li>
+            <a href="#favoritos/"><i class="fas fa-heart"></i>Mis recetas favoritas</a>
+          </li>
+          <li>
+            <a href="#login/"><i class="fas fa-sign-out-alt"></i>Salir</a>
+          </li>
+        </ul>
+      </div>
+      <section id="root"></section>
+    </div>
+  </main>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCAaV1m-AIKhcYfo2VYbIARCj2rBqgdOG8",
-    authDomain: "appetecible-fa51c.firebaseapp.com",
-    projectId: "appetecible-fa51c",
-    storageBucket: "appetecible-fa51c.appspot.com",
-    messagingSenderId: "149556979022",
-    appId: "1:149556979022:web:cccf3f7cd1f1b0c099ea1f"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCAaV1m-AIKhcYfo2VYbIARCj2rBqgdOG8",
+      authDomain: "appetecible-fa51c.firebaseapp.com",
+      projectId: "appetecible-fa51c",
+      storageBucket: "appetecible-fa51c.appspot.com",
+      messagingSenderId: "149556979022",
+      appId: "1:149556979022:web:cccf3f7cd1f1b0c099ea1f",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
   <script type="module" src="main.js"></script>
 </body>
+
 </html>

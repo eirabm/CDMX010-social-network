@@ -3,6 +3,10 @@
 *{
     box-sizing: border-box;
 }
+
+.none{
+    display: none;
+}
 .login{
     font-family: 'Roboto', sans-serif;
     background: #F6F5F7;
@@ -37,7 +41,7 @@ a{
 }
 
 .container{
-    background: #fff;
+    background: rgb(245, 241, 241);
     border-radius: 10px;
     box-shadow: 0 14px 28px rgb(0, 0, 0, 0.25), 0 10px 10px rgb(0, 0, 0, 0.22);
     position: relative;
@@ -189,13 +193,13 @@ transform: translateX(100%);
 }
 #contenido.main-container{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
 
 }
 
 #home.section{
-    background-color:#f2f2fc ;
+    background-color:#fafafa ;
     width: 100%; 
     display: flex;
     align-items: center;
@@ -212,8 +216,8 @@ transform: translateX(100%);
   
 #menu.aside{
     width: 270px;
-    background-color: #fdf9ff;
-    border-right:1px solid #e8dfec;
+    background-color: #7F152E;
+    border-right:1px solid #7F152E;
     padding: 30px;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
@@ -231,7 +235,7 @@ transform: translateX(100%);
     font-weight: 700;
     text-decoration: none;
     display: inline-block;
-    background-color: #ededed;   
+    background-color: #7F152E;   
 }
 
 #menu.aside .logo a img{
@@ -246,7 +250,7 @@ transform: translateX(100%);
     position: fixed;
     left: 300px;
     top:30px;
-    z-index: 11;
+    /* z-index: 11; */
     border-radius: 5px;
     background-color: #fdf9ff;
     /* display: flex;
@@ -320,7 +324,7 @@ transform: translateX(100%);
 #menu.aside .nav li a{
     display: block;
     font-size: 16px;
-    color:#302e4d;
+    color:#e3e2eb;
     text-decoration: none;
     line-height: 45px ;
     border-bottom:1px solid #e8dfec;
@@ -330,13 +334,13 @@ transform: translateX(100%);
 }
 
 #menu.aside .nav li a:hover, .aside .nav li a.active{
-    color: #ec1839;
+    color: #d7ec18;
 }
 
 #menu.aside .nav-toggler span,
 #menu.aside .nav-toggler span::before,
 #menu.aside .nav-toggler span::after{
-    background-color:#ec1839;
+    background-color:#d7ec18;
 } 
 
 #menu.aside .nav li a:not(.active):hover{
