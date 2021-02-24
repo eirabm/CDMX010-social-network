@@ -1,59 +1,55 @@
-export const signUp = `
+export const authPage = `
 <div class="container" id="container">
-<div class="form-container sign-up-container">
-    <form action="#" >
+ <div class="form-container sign-up-container">
+    <form action="#" name="signUpForm" id="signUpForm">
         <h1>Crear cuenta</h1>
-        <div class="social-container">
-            <a href="" class="social"><i class="fab fa-facebook"></i></a>
-            <a href="" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="" class="social"><i class="fab fa-github"></i></a>
-        </div>
-        <form 
-        <span>0 usa tu email para registrarte</span>
-        <input type="text" placeholder="Nombre">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <button >Crear cuenta</button>
+        <span>usa tu email para registrarte</span>
+        <input type="text" name="signUpName" placeholder="Nombre" required>
+        <input type="email" name= "signUpEmail" placeholder="Email" required>
+        <input type="password" name= "signUpPassword" placeholder="Password" required>
+        <button type="submit" href="#/">Crear cuenta</button>
         <br>
         <br>
-        <button id="sign-in-mobile" type="submit" href="#/">Iniciar sesiòn</button>
-        
+        <button id="sign-in-mobile">Iniciar sesiòn</button>
     </form>
-  
-</div>
-<div class="form-container sign-in-container">
-    <form action="#">
-        <h1>Ingresar</h1>
-        <div class="social-container">
-            <a href="" class="social"><i class="fab fa-facebook"></i></a>
-            <a href="" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="" class="social"><i class="fab fa-github"></i></a>
-        </div>
-        <span>o usa tu cuenta</span>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <a href="#">¿Olvidaste tu contraseña?</a>
-        <button> Ingresar</button>
-        <br>
-        <br>
-        <button id="sign-up-mobile">Crear cuenta</button>
-    </form>
-   
-</div>
-<div class="overlay-container">
+ </div>
+ <div class="form-container sign-in-container">
+    <form action="#" name="signInForm" id="signInForm" >
+     <h1>Iniciar sesiòn</h1>
+    <div class="social-container" id="social-container">
+        <img id= "logInFacebook" src="https://cdn.icon-icons.com/icons2/642/PNG/512/facebook_icon-icons.com_59205.png">
+        <img id="logInGithub" src="https://cdn.worldvectorlogo.com/logos/google-icon.svg">
+        <img id="logInGoogle" src="https://image.flaticon.com/icons/png/512/25/25231.png">
+    </div>
+    <span>o usa tu cuenta</span>
+    <input type="email"name="signInEmail" placeholder="Email" required>
+    <input type="password" placeholder="Password" name="signInPassword" required>
+    <a href="#">¿Olvidaste tu contraseña?</a>
+    <button type="submit" href="#/">Ingresar</button>
+    <br>
+    <br>
+    <button id="sign-up-mobile" href="#/">Crear cuenta</button>
+  </form>
+ </div>
+ <div class="overlay-container">
     <div class="overlay">
         <div class="overlay-panel overlay-left">
+         <img src="https://user-images.githubusercontent.com/66543426/108759709-515f6700-7512-11eb-95fa-03b759694a1a.png">
+                  <br>
+                  <br>
             <h1>¡Aprende, cocina y comparte!</h1>
-            <p>Únete a nuestra comunidad y comparte tus mejores recetas</p>
-            <button class="chage" id="signIn">Sign In</button>
+            <p>Bienvenido, sigue compartiendo tus receta. </p>
+            <button class="chage" id="signIn">Iniciar sesiòn</button>
         </div>
         <div class="overlay-panel overlay-right">
+         <img src="https://user-images.githubusercontent.com/66543426/108759709-515f6700-7512-11eb-95fa-03b759694a1a.png">
+                  <br>
+                  <br>
             <h1>¡Aprende, cocina y comparte!</h1>
             <p>Únete a nuestra comunidad y comparte tus mejores recetas</p>
-            <button class="chage" id="signUp">Sign Up</button>
+            <button class="chage" id="signUp">Crear cuenta</button>
         </div> 
     </div>
-</div>
-
+  </div>
 </div>
   `;

@@ -1,18 +1,26 @@
-import { signUp } from './lib/authPages.js';
-import { homePage } from './lib/pages.js';
+import { authPage } from './lib/authPages.js';
+import { perfil } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
 
-import {
-  createUser,
-  logInEmailPass,
-  authGitHub,
-  authGoogle,
-  authFacebook,
-  hasUserAuth,
-} from './userFireBase.js';
+import { authSN, signUp, hasUserAuth , logInEmailPass} from './lib/authScript.js';
 
-const rootDiv = document.getElementById('root');
-// Renderiza las páginas de acuerdo al hash de cada página
+const mainPage = document.getElementById('root');
+const loginContainer = document.getElementById('login-container');
+function initLoginEvent() {
+  const socialContainer = document.getElementById('social-container');
+  console.log(socialContainer);
+  socialContainer.addEventListener('click', authSN);
+  const formSignUp = document.getElementById('signUpForm');
+  formSignUp.addEventListener('submit', signUp);
+  // const signUpButton = document.getElementById('signUp');
+  // const signInButton = document.getElementById('signIn');
+}
+
+function signInInit() {
+  const formSignIn = document.getElementById('signInForm');
+  formSignIn.addEventListener('submit', logInEmailPass);
+}
+
 function primeraPag() {
   const signUpButton = document.getElementById('signUp');
   console.log(signUpButton);
@@ -38,7 +46,7 @@ function home() {
   const navTogglerBtn = document.querySelector('.nav-toggler');
   console.log(navTogglerBtn);
   const aside = document.querySelector('.aside');
-  const section = document.getElementById('section');
+  const section = document.getElementById('navegador');
 
   navTogglerBtn.addEventListener('click', () => {
     aside.classList.toggle('open');
@@ -46,28 +54,45 @@ function home() {
     section.classList.toggle('open');
   });
 }
+home();
 
 const routes = {
-  '/': homePage,
-  '/login': signUp,
+  home: () => {
+    mainPage.innerHTML = '<div>home/posts<a href="#/perfil">Ir a mi perfil</a></div>';
+    mainPage.classList.remove('none');
+    loginContainer.classList.add('none');
+  },
+  login: () => {
+    loginContainer.innerHTML = authPage;
+    initLoginEvent();
+    primeraPag();
+    signInInit();
+  },
+  perfil: () => {
+    mainPage.innerHTML = perfil;
+    mainPage.classList.remove('none');
+    loginContainer.classList.add('none');
+  },
 };
 
 // function que limpia la url
-const clearPathname = (hash) => hash.replace('#', '');
+const clearPathname = (hash) => hash.replace('#/', '');
 
 // render function
 const renderPage = async () => {
   const isAuthenticated = await hasUserAuth();
-  console.log(isAuthenticated);
-  let pathname = '/';
-
+  let pathname = '';
   if (!isAuthenticated) {
-    pathname = '/login';
-  } else if (window.location.hash.length) {
+    pathname = 'login';
+  } else {
     pathname = clearPathname(window.location.hash);
+    if (!pathname.length) {
+      pathname = 'home';
+    }
   }
-
-  rootDiv.innerHTML = routes[pathname];
+  console.log(pathname);
+  const page = routes[pathname];
+  page();
 };
 
 // cuando navega
@@ -78,7 +103,6 @@ window.addEventListener('hashchange', async () => {
 // cuando carge el sitio
 window.onload = async () => {
   await renderPage();
-  primeraPag();
 };
 
 const logInData = () => {
@@ -94,7 +118,6 @@ const logInData = () => {
     const email = formLogIn.logInEmail.value;
     const password = formLogIn.logInPassword.value;
     logInEmailPass(email, password);
-    return false;
   });
 };
 

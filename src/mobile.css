@@ -1,0 +1,100 @@
+.container{
+    position: inherit;
+    height: 100%;
+}
+.form-container.sign-up-container, .form-container.sign-in-container{
+    width: 100%;
+}
+.overlay-container{
+   /* height: 200px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    top:inherit;
+    */
+    display: none;
+}
+
+.container.right-panel-active .sign-up-container{
+   transform: translateX(0);
+   }
+
+   #sign-up-mobile, #sign-in-mobile{
+       display: block;
+       background-color: rgb(192, 145, 17);
+       border: none;
+   }
+
+   .main-container {
+    width: fit-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.aside {
+    width: 0;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.aside.open {
+  width :270px;
+}
+
+.section{
+   width: 100%;
+}
+
+.aside .nav-toggler{
+    display: -ms-flexbox;
+    display: flex;
+    left: 30px;
+} 
+
+.aside .nav-toggler.open{
+    left: 100px;
+}
+
+
+#contenido.main-container {
+    width: fit-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+#menu.aside {
+    width: 0;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+#menu.aside.open {
+  width :270px;
+}
+
+#home.section{
+   width: 100%;
+   
+}
+
+#perfil-usuario.container{
+box-shadow: none;
+height: 100%;
+text-align: center
+}
+
+#menu.aside .nav-toggler{
+    display: -ms-flexbox;
+    display: flex;
+    left: 30px;
+} 
+
+#menu.aside .nav-toggler.open{
+    left: 310px;
+}
