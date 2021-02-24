@@ -197,6 +197,30 @@ transform: translateX(100%);
     transform: translateX(20%);
 }
 
+.error-message-already-user {
+    color:#7F152E;
+    font-weight: bold;
+    display: none;
+}
+
+.error-message-verification {
+    color:#7F152E;
+    font-weight: bold;
+    display: none;
+}
+
+.error-message-not-found {
+    color:#7F152E;
+    font-weight: bold;
+    display: none;
+}
+
+.verification {
+    color:darkgreen;
+    font-weight: bold;
+    display: none;
+}
+
 /* Pàgina de error */
 .error404 {
     display: flex;
@@ -225,6 +249,7 @@ transform: translateX(100%);
     font-family: 'Cookie', cursive;
     font-size: 2.5rem;
 }
+
 @media (max-width: 650px) {
  .container{
      position: inherit;
@@ -246,6 +271,7 @@ transform: translateX(100%);
     transform: translateX(0);
  }
 }
+
 
 @media (max-width: 650px) {
  .container{
