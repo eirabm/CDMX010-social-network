@@ -3,11 +3,13 @@
 import { myFunction } from './lib/index.js';
 import { authPage } from './lib/authPages.js';
 import { authSN, signUp } from './lib/authScript.js';
+import { homePage } from './lib/pages.js';
 
 const mainPage = document.getElementById('root');
 
 const routes = {
   '#/login/': authPage,
+  '#/': homePage,
 };
 
 mainPage.innerHTML = authPage;

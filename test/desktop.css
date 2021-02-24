@@ -1,0 +1,10 @@
+.nav-info {
+    display: inline-block;
+  }
+    nav ul li{
+      display: inline-block;
+    }
+  
+  .toggle-btn span {
+    display: none;
+  }
