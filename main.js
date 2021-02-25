@@ -2,8 +2,9 @@
 
 import { myFunction } from './lib/index.js';
 import { authPage } from './lib/authPages.js';
-import { authSN, signUp } from './lib/authScript.js';
+import { authSN, signUp, logInEmail, logOut, hasUserAuth } from './lib/authScript.js';
 import { homePage } from './lib/pages.js';
+
 
 const mainPage = document.getElementById('root');
 
@@ -19,6 +20,9 @@ socialContainer.addEventListener('click', authSN);
 
 const formSignUp = document.forms.signUpForm;
 formSignUp.addEventListener('submit', signUp);
+
+const formLogIn = document.forms.logInForm;
+formLogIn.addEventListener('submit', logInEmail);
 
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
