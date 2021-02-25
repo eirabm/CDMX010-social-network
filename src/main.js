@@ -2,10 +2,20 @@ import { authPage } from './lib/authPages.js';
 import { perfil } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
 
-import { authSN, signUp, hasUserAuth , logInEmailPass} from './lib/authScript.js';
+import {
+  authSN, signUp, hasUserAuth, logInEmailPass, salirApp
+} from './lib/authScript.js';
 
 const mainPage = document.getElementById('root');
 const loginContainer = document.getElementById('login-container');
+const mainContainer = document.getElementById('contenido');
+
+// salir de la aplicacion
+function salir() {
+  const btnSalir = document.getElementById('salir');
+console.log(btnSalir);
+  btnSalir.addEventListener('click', salirApp);
+}
 function initLoginEvent() {
   const socialContainer = document.getElementById('social-container');
   console.log(socialContainer);
@@ -59,18 +69,21 @@ home();
 const routes = {
   home: () => {
     mainPage.innerHTML = '<div>home/posts<a href="#/perfil">Ir a mi perfil</a></div>';
-    mainPage.classList.remove('none');
+    mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
+    salir();
   },
   login: () => {
     loginContainer.innerHTML = authPage;
     initLoginEvent();
     primeraPag();
     signInInit();
+    loginContainer.classList.remove('none');
+    mainContainer.classList.add('none');
   },
   perfil: () => {
     mainPage.innerHTML = perfil;
-    mainPage.classList.remove('none');
+    mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
   },
 };

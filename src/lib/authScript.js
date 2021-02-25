@@ -13,7 +13,7 @@ export const signUp = (e) => {
     .then((result) => {
       // url para redireccionar a nuestra página
       const config = {
-        url: 'http://localhost:5500/src/index.html#login/',
+        url: 'http://localhost:5000/#/login',
       };
       //  enviar un mensaje de verificación al usuario y redireccionarlo a nuestra página
       result.user
@@ -57,14 +57,16 @@ export const authSN = () => {
       });
   });
 
-  const logInGoogleButton = document.getElementById('logInGithub');
+  const logInGoogleButton = document.getElementById('logInGoogle');
+
   logInGoogleButton.addEventListener('click', () => {
-    console.log('estas re wey');
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
         window.location.hash = '#/';
       })
       .catch((error) => {
@@ -125,4 +127,15 @@ export const hasUserAuth = async () => {
     isAuthenticated = true;
   }
   return isAuthenticated;
+};
+
+export const salirApp = () => {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    console.log('salir');
+    window.location.hash = '#/login';
+  }).catch((error) => {
+    console.log(error);
+  // An error happened.
+  });
 };
