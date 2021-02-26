@@ -2,7 +2,9 @@
 
 import { myFunction } from './lib/index.js';
 import { authPage } from './lib/authPages.js';
-import { authSN, signUp, logInEmail, logOut, hasUserAuth } from './lib/authScript.js';
+import {
+  authSN, signUp, logInEmail, logOut, hasUserAuth 
+} from './lib/authScript.js';
 import { homePage } from './lib/pages.js';
 
 

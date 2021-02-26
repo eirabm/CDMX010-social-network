@@ -197,8 +197,6 @@ transform: translateX(100%);
     transform: translateX(20%);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 /* Pàgina de error */
 .error404 {
     display: flex;
@@ -227,9 +225,8 @@ transform: translateX(100%);
     font-family: 'Cookie', cursive;
     font-size: 2.5rem;
 }
-=======
-=======
->>>>>>> 00ef29eec74aaec2880bb82bae1ff7c0b153bbf5
+
+/* log in and sign up error messages */
 .error-message-already-user {
     color:#7F152E;
     font-weight: bold;
@@ -254,7 +251,6 @@ transform: translateX(100%);
     display: none;
 }
 
-<<<<<<< HEAD
 /*Home Page*/
 header{
     display: inline-block;
@@ -339,10 +335,6 @@ nav img {
   width: 100%;
 }
 
-
->>>>>>> b7273c950e53e7ea80e0a97c65da6b0281320503
-=======
->>>>>>> 00ef29eec74aaec2880bb82bae1ff7c0b153bbf5
 @media (max-width: 650px) {
  .container{
      position: inherit;
@@ -362,25 +354,19 @@ nav img {
  }
  .container.right-panel-active .sign-up-container{
     transform: translateX(0);
-<<<<<<< HEAD
- }
 }
-=======
-    }
-
-<<<<<<< HEAD
->>>>>>> b7273c950e53e7ea80e0a97c65da6b0281320503
-=======
->>>>>>> 00ef29eec74aaec2880bb82bae1ff7c0b153bbf5
+}
 
 @media (max-width: 650px) {
  .container{
      position: inherit;
      height: 100%;
  }
+
  .form-container.sign-up-container, .form-container.sign-in-container{
      width: 100%;
  }
+
  .overlay-container{
     /* height: 200px;
      width: 100%;
@@ -390,8 +376,48 @@ nav img {
      */
      display: none;
  }
+
  .container.right-panel-active .sign-up-container{
     transform: translateX(0);
     }
 }
+
+/* new recipe format */
+
+.new-recipe-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.new-recipe-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
   }
+
+.new-recipe-form input {
+    width: 200px;
+    height: 20px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
+
+.new-recipe-form label {
+    font-weight: bold;
+    margin: 2.5%;
+}
+
+ .new-recipe-form textarea {
+  width : 300px;
+  height: 100px;
+  resize: none;
+  border-radius: 4px;
+  margin-bottom: 18px;
+       box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
