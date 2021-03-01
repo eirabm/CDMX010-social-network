@@ -1,0 +1,28 @@
+header{
+  display: flex;
+  flex-direction: column;
+}
+.nav-info {
+  display: block;
+  width: 280px;
+  background-color: #7F152E;
+  border-right:1px solid #7F152E;
+  padding: 30px;
+  padding-left: 0px;
+  height: 100%;
+  position: fixed;
+}
+.nav-info a {
+  color: #fff;
+}
+
+.toggle-btn span{
+  display:none;
+}
+.nav-info li{
+  display: block;
+}
+
+.post container{
+  left: 400px;
+}
