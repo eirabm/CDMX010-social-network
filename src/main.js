@@ -1,8 +1,8 @@
 import { authPage } from './lib/authPages.js';
-import { perfil } from './lib/pages.js';
+import { perfil, newRecipePage } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
-
-import { authSN, signUp, hasUserAuth , logInEmailPass} from './lib/authScript.js';
+import { newPost, getPosts } from './newPost.js';
+import { authSN, signUp, hasUserAuth, logInEmailPass} from './lib/authScript.js';
 
 const mainPage = document.getElementById('root');
 const loginContainer = document.getElementById('login-container');
@@ -43,6 +43,7 @@ function primeraPag() {
     container.classList.remove('right-panel-active');
   });
 }
+
 function home() {
   const navTogglerBtn = document.querySelector('.nav-toggler');
   console.log(navTogglerBtn);
@@ -57,9 +58,14 @@ function home() {
 }
 home();
 
+function createPost () {
+  const submitPost = document.getElementById('newRecipeButton');
+  submitPost.addEventListener('click', newPost);
+}
+
 const routes = {
   home: () => {
-    mainPage.innerHTML = '<div>home/posts<a href="#/perfil">Ir a mi perfil</a></div>';
+    mainPage.innerHTML = getPosts();
     mainPage.classList.remove('none');
     loginContainer.classList.add('none');
   },
@@ -76,9 +82,10 @@ const routes = {
   },
 
   new: () => {
-    mainPage.innerHTML = newPostPage;
+    mainPage.innerHTML = newRecipePage;
     mainPage.classList.remove('none');
     loginContainer.classList.add('none');
+    createPost();
   },
 };
 
