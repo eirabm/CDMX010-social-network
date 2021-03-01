@@ -15,7 +15,10 @@ export const perfil = `
 export const newRecipePage = `
 <div class= "new-recipe-container">
   <h1 class="new-recipe-title"> Nueva receta </h1> <br>
+  <img src="" id="imgRecipePreview" class="img-preview-recipe">
     <form action="#" name="newRecipeForm" class= "new-recipe-form">
+      <label for="imageFile">Selecciona la imagen de tu receta</label>
+      <input type="file" id="recipe-image" accept="image/*" required>
       <label for="newRecipeTitle">Escribe el título de la receta</label>
       <input type="text" name="newRecipeTitle" id="NewRecipeTitle" placeholder= "Ej. Buñuelos" required>
       <label for="newRecipeDescription">Descripción de tu receta</label>
@@ -23,4 +26,8 @@ export const newRecipePage = `
       <button id="newRecipeButton">Subir receta</button>
     </form>
 </div>
+`;
+
+export const postsPage = `
+<div id="post-container"></div>
 `;

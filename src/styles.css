@@ -585,3 +585,58 @@ nav img {
   margin-bottom: 18px;
        box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
 }
+
+.recipe-template {
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+  width: 320px;
+ padding: 1.5%;
+       box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+ border-radius: 8px;c
+}
+
+.recipe-info {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+ margin: 20px;
+}
+
+.recipe-info h3 {
+  font-family: 'Satisfy', cursive;
+ align-self: center;
+ font-weight: bold;
+   font-size: 1.5rem;
+}
+
+.recipe-info textarea {
+ width : 300px;
+ height: 150px;
+ cursor: context-menu;
+ border: none;
+ font-family: 'Roboto', sans-serif;
+ font-size: 1rem;
+ margin-left: -2rem;
+ resize: none;
+ outline: none;
+}
+
+.front img {
+ self-align: center;
+ object-fit: cover;
+ width: 300px;
+ height: 180px;
+ border-radius: 8px;
+}
+
+.img-preview-recipe{
+    self-align: center;
+    object-fit: cover;
+    width: 300px;
+    height: 180px;
+    border-radius: 8px;
+}

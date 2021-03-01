@@ -1,5 +1,6 @@
 let recipeTitle;
 let description;
+let recipeImageUrl;
 
 function getPostData() {
   recipeTitle = document.getElementById('NewRecipeTitle').value;
@@ -7,46 +8,64 @@ function getPostData() {
 }
 
 export const newPost = (e) => {
-    e.preventDefault();
+  e.preventDefault();
   getPostData();
 
   firebase.firestore().collection('post').add({
     title: recipeTitle,
     post: description,
+    image: recipeImageUrl,
   });
 };
 
-function createPost(title, recipeDescription) {
-  const postContainer = document.getElementById('root');
+export const previewIMG = () => {
+  const imgInput = document.getElementById('recipe-image');
+  imgInput.addEventListener('change', () => {
+    const preview = document.getElementById('imgRecipePreview');
+    const file = document.querySelector('input[type=file]').files[0];
+    const reader = new FileReader();
 
-  const div = document.createElement('div');
-  div.setAttribute('class', 'col-md-4');
+    reader.onloadend = () => {
+      preview.src = reader.result;
+      recipeImageUrl = reader.result;
+    };
 
-  let h2 = document.createElement('h2');
-  let p = document.createElement('p');
+    reader.readAsDataURL(file);
+  });
+};
 
-  h2.textContent = title;
-  p.textContent = recipeDescription;
+function createPost(doc) {
+  const postContainer = document.getElementById('post-container');
+  const getRecipeTitle = doc.data().title;
+  const getRecipeDescription = doc.data().post;
+  const getRecipeImg = doc.data().image;
+  const recipeID = doc.id;
 
-  div.appendChild(h2);
-  div.appendChild(p);
+  const post = `
+  <div class="recipe-template" id="${recipeID}">
+     <div class="user-data">
+     <p>name</p>
+  </div>
+  <div class="recipe-face front">
+  <figure>
+    <img src="${getRecipeImg}">
+  </figure>
+  <div class="recipe-info">
+  <h3> ${getRecipeTitle} </h3>
+  <textarea readonly>${getRecipeDescription}</textarea>
+  </div>
+</div>
+`;
 
-  postContainer.appendChild(div);
+  postContainer.innerHTML += post;
 }
 
 export const getPosts = () => {
   firebase.firestore().collection('post')
     .get()
     .then((snapshot) => {
-      console.log(snapshot);
-
-      snapshot.docs.forEach((docs) => {
-        console.log(docs);
-
-        createPost(
-          docs.data().recipeTitle,
-          docs.data().description,
-        );
+      snapshot.docs.forEach((doc) => {
+        createPost(doc);
       });
     })
     .catch(err => {

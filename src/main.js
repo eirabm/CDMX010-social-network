@@ -1,7 +1,7 @@
 import { authPage } from './lib/authPages.js';
-import { perfil, newRecipePage } from './lib/pages.js';
+import { perfil, newRecipePage, postsPage } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
-import { newPost, getPosts } from './newPost.js';
+import { newPost, previewIMG, getPosts } from './newPost.js';
 import { authSN, signUp, hasUserAuth, logInEmailPass} from './lib/authScript.js';
 
 const mainPage = document.getElementById('root');
@@ -65,10 +65,12 @@ function createPost () {
 
 const routes = {
   home: () => {
-    mainPage.innerHTML = getPosts();
+    getPosts();
+    mainPage.innerHTML = postsPage;
     mainPage.classList.remove('none');
     loginContainer.classList.add('none');
   },
+
   login: () => {
     loginContainer.innerHTML = authPage;
     initLoginEvent();
@@ -85,6 +87,7 @@ const routes = {
     mainPage.innerHTML = newRecipePage;
     mainPage.classList.remove('none');
     loginContainer.classList.add('none');
+    previewIMG();
     createPost();
   },
 };
@@ -118,4 +121,3 @@ window.addEventListener('hashchange', async () => {
 window.onload = async () => {
   await renderPage();
 };
-
