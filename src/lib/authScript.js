@@ -119,14 +119,14 @@ export const logInEmailPass = (e) => {
     });
 };
 
-export const hasUserAuth = async () => {
-  let isAuthenticated = false;
-
-  const user = await firebase.auth();
-  if (user) {
-    isAuthenticated = true;
-  }
-  return isAuthenticated;
+export const hasUserAuth = (callback) => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      callback(true);
+    } else {
+      callback(false);
+    }
+  });
 };
 
 export const salirApp = () => {
@@ -138,4 +138,9 @@ export const salirApp = () => {
     console.log(error);
   // An error happened.
   });
+};
+
+export const getData = (callback) => {
+  // callback ======== (user) => {...}
+  firebase.auth().onAuthStateChanged(callback);
 };

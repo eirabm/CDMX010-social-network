@@ -1,9 +1,8 @@
 import { authPage } from './lib/authPages.js';
-import { perfil } from './lib/pages.js';
+import { perfil, homePost } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
-
 import {
-  authSN, signUp, hasUserAuth, logInEmailPass, salirApp
+  authSN, signUp, hasUserAuth, logInEmailPass, salirApp, getData,
 } from './lib/authScript.js';
 
 const mainPage = document.getElementById('root');
@@ -13,7 +12,7 @@ const mainContainer = document.getElementById('contenido');
 // salir de la aplicacion
 function salir() {
   const btnSalir = document.getElementById('salir');
-console.log(btnSalir);
+  console.log(btnSalir);
   btnSalir.addEventListener('click', salirApp);
 }
 function initLoginEvent() {
@@ -68,10 +67,16 @@ home();
 
 const routes = {
   home: () => {
-    mainPage.innerHTML = '<div>home/posts<a href="#/perfil">Ir a mi perfil</a></div>';
+    mainPage.innerHTML = homePost;
     mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
     salir();
+    getData((user) => {
+      const userPhoto = document.getElementById('foto');
+      const photo = user.photoURL;
+      console.log(photo);
+      userPhoto.src = photo;
+    });
   },
   login: () => {
     loginContainer.innerHTML = authPage;
@@ -85,6 +90,25 @@ const routes = {
     mainPage.innerHTML = perfil;
     mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
+    // const callback = (user) => {console.log(user);}
+    getData((user) => {
+      const userPhoto = document.getElementById('fotos');
+      console.log(userPhoto);
+      const userName = document.getElementById('nombre');
+      console.log(userName);
+      const userEmail = document.getElementById('correo');
+      console.log(userEmail);
+      const photo = user.photoURL;
+      console.log(photo);
+      const name = user.displayName;
+      console.log(name);
+      const email = user.email;
+      console.log(email);
+
+      userPhoto.src = photo;
+      userName.innerHTML = name;
+      userEmail.innerHTML = email;
+    });
   },
 };
 
@@ -92,20 +116,22 @@ const routes = {
 const clearPathname = (hash) => hash.replace('#/', '');
 
 // render function
-const renderPage = async () => {
-  const isAuthenticated = await hasUserAuth();
-  let pathname = '';
-  if (!isAuthenticated) {
-    pathname = 'login';
-  } else {
-    pathname = clearPathname(window.location.hash);
-    if (!pathname.length) {
-      pathname = 'home';
+const renderPage = () => {
+  hasUserAuth((isAuthenticated) => {
+    let hashPath = '';
+    if (!isAuthenticated) {
+      hashPath = 'login';
+      window.location.hash = '#/login';
+    } else {
+      hashPath = clearPathname(window.location.hash);
+      if (!hashPath.length) {
+        hashPath = 'home';
+      }
     }
-  }
-  console.log(pathname);
-  const page = routes[pathname];
-  page();
+    console.log(hashPath);
+    const page = routes[hashPath];
+    page();
+  });
 };
 
 // cuando navega
@@ -118,29 +144,29 @@ window.onload = async () => {
   await renderPage();
 };
 
-const logInData = () => {
-  document.getElementById('error--message').style.display = 'none';
-  const formLogIn = document.forms.logInForm;
-  const logInGithub = document.getElementById('logInGithub');
-  logInGithub.addEventListener('click', authGitHub);
-  const logInGoogleButton = document.getElementById('logInGoogleButton');
-  logInGoogleButton.addEventListener('click', authGoogle);
-  const btnFecebook = document.getElementById('logInFacebook');
-  btnFecebook.addEventListener('click', authFacebook);
-  formLogIn.addEventListener('submit', () => {
-    const email = formLogIn.logInEmail.value;
-    const password = formLogIn.logInPassword.value;
-    logInEmailPass(email, password);
-  });
-};
+// const logInData = () => {
+//   document.getElementById('error--message').style.display = 'none';
+//   const formLogIn = document.forms.logInForm;
+//   const logInGithub = document.getElementById('logInGithub');
+//   logInGithub.addEventListener('click', authGitHub);
+//   const logInGoogleButton = document.getElementById('logInGoogleButton');
+//   logInGoogleButton.addEventListener('click', authGoogle);
+//   const btnFecebook = document.getElementById('logInFacebook');
+//   btnFecebook.addEventListener('click', authFacebook);
+//   formLogIn.addEventListener('submit', () => {
+//     const email = formLogIn.logInEmail.value;
+//     const password = formLogIn.logInPassword.value;
+//     logInEmailPass(email, password);
+//   });
+// };
 
-const signUpData = () => {
-  const formSignUp = document.forms.signUpForm;
-  formSignUp.addEventListener('submit', () => {
-    document.getElementById('error--message--signUp').style.display = 'none';
-    const name = formSignUp.signUpName.value;
-    const email = formSignUp.signUpEmail.value;
-    const password = formSignUp.signUpPassword.value;
-    createUser(email, password);
-  });
-};
+// const signUpData = () => {
+//   const formSignUp = document.forms.signUpForm;
+//   formSignUp.addEventListener('submit', () => {
+//     document.getElementById('error--message--signUp').style.display = 'none';
+//     const name = formSignUp.signUpName.value;
+//     const email = formSignUp.signUpEmail.value;
+//     const password = formSignUp.signUpPassword.value;
+//     createUser(email, password);
+//   });
+// };
