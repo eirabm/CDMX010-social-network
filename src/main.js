@@ -5,14 +5,27 @@ import { authPage } from './lib/authPages.js';
 import {
   authSN, signUp, logInEmail, logOut, hasUserAuth 
 } from './lib/authScript.js';
-import { homePage } from './lib/pages.js';
-
+import { homePage, error404, newRecipePage, profilePage } from './lib/pages.js';
 
 const mainPage = document.getElementById('root');
+const sectionPage = document.getElementById('page-container');
 
 const routes = {
-  '#/login/': authPage,
-  '#/': homePage,
+  home: () => {
+    mainPage.innerHTML = homePage;
+    logOut();
+  },
+  
+  login: () => {
+    loginContainer.innerHTML = authPage;
+    initLoginEvent();
+    primeraPag();
+    signInInit();
+  },
+  perfil: () => {
+    mainPage.innerHTML = homePage;
+    sectionPage.innerHTML = profilePage;
+  },
 };
 
 mainPage.innerHTML = authPage;

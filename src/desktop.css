@@ -4,14 +4,27 @@ font-family: 'Satisfy', cursive;
 font-family: 'Roboto', sans-serif;
 */
 
-.authPage-container {
-    flex-direction: row;
+.nav-info {
+  display: block;
+  width: 280px;
+  background-color: #7F152E;
+  border-right:1px solid #7F152E;
+  padding: 30px;
+  padding-left: 0px;
+  height: 100%;
+  position: fixed;
+}
+.nav-info a {
+  color: #fff;
 }
 
-.authPage-header-container {
-    width: 60%;
+.toggle-btn span{
+  display:none;
+}
+.nav-info li{
+  display: block;
 }
 
-.authPage-main-container {
-    width: 40%;
+.page-container{
+  left: 400px;
 }
