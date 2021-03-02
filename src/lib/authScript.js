@@ -121,6 +121,7 @@ export const logInEmailPass = (e) => {
 
 export const hasUserAuth = (callback) => {
   firebase.auth().onAuthStateChanged((user) => {
+  debugger;
     if (user) {
       callback(true);
     } else {

@@ -1,14 +1,20 @@
 import { authPage } from './lib/authPages.js';
-import { perfil, homePost } from './lib/pages.js';
+import { perfil, homePost, newRecipePage } from './lib/pages.js';
 // import { errorUserAlreadyExists } from './lib/errorUserExists.js';
 import {
   authSN, signUp, hasUserAuth, logInEmailPass, salirApp, getData,
 } from './lib/authScript.js';
+import { newPost, previewIMG, getPosts } from './lib/newPost.js';
 
 const mainPage = document.getElementById('root');
 const loginContainer = document.getElementById('login-container');
 const mainContainer = document.getElementById('contenido');
 
+// new post
+function createPost() {
+  const submitPost = document.getElementById('newRecipeButton');
+  submitPost.addEventListener('click', newPost);
+}
 // salir de la aplicacion
 function salir() {
   const btnSalir = document.getElementById('salir');
@@ -64,7 +70,7 @@ function home() {
   });
 }
 home();
-
+// rutas de cada pagina del home
 const routes = {
   home: () => {
     mainPage.innerHTML = homePost;
@@ -77,6 +83,7 @@ const routes = {
       console.log(photo);
       userPhoto.src = photo;
     });
+    getPosts();
   },
   login: () => {
     loginContainer.innerHTML = authPage;
@@ -110,6 +117,13 @@ const routes = {
       userEmail.innerHTML = email;
     });
   },
+  new: () => {
+    mainPage.innerHTML = newRecipePage;
+    mainPage.classList.remove('none');
+    loginContainer.classList.add('none');
+    previewIMG();
+    createPost();
+  },
 };
 
 // function que limpia la url
@@ -124,11 +138,13 @@ const renderPage = () => {
       window.location.hash = '#/login';
     } else {
       hashPath = clearPathname(window.location.hash);
+      debugger;
       if (!hashPath.length) {
         hashPath = 'home';
       }
     }
     console.log(hashPath);
+    debugger;
     const page = routes[hashPath];
     page();
   });
