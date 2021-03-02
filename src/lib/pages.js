@@ -5,9 +5,9 @@ export const perfil = `
                      <img src=https://www.softzone.es/app/uploads/2018/04/guest.png alt="" class="shadow-dark" id="fotos">
                      <h1 id="nombre">nombre</h1>
                      <p id="correo">correo</p>
-                     <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+                     <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
                      <br>
-                     <button>Editar</button>
+                     <button id="enviar">Editar</button>
                  </div>
 </section>
 `;
@@ -28,7 +28,7 @@ export const newRecipePage = `
 </div>
 `;
 
-export const postsPage = `
+export const homePost = `
 <section class="home section">
     <div class="container" id="home-usuario">
         <div class="encabezado">

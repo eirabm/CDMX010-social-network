@@ -98,3 +98,30 @@ text-align: center
 #menu.aside .nav-toggler.open{
     left: 310px;
 }
+
+.home.section{
+    display: flex;
+}
+
+#home-usuario.container{
+    box-shadow: none;
+
+}
+
+.encabezado{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+.foto.perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.buscar.post{
+display: flex;
+flex-direction: column;
+}

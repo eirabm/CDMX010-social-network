@@ -13,7 +13,7 @@ export const signUp = (e) => {
     .then((result) => {
       // url para redireccionar a nuestra página
       const config = {
-        url: 'http://localhost:5500/src/index.html#login/',
+        url: 'http://localhost:5000/#/login',
       };
       //  enviar un mensaje de verificación al usuario y redireccionarlo a nuestra página
       result.user
@@ -57,14 +57,16 @@ export const authSN = () => {
       });
   });
 
-  const logInGoogleButton = document.getElementById('logInGithub');
+  const logInGoogleButton = document.getElementById('logInGoogle');
+
   logInGoogleButton.addEventListener('click', () => {
-    console.log('estas re wey');
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
         window.location.hash = '#/';
       })
       .catch((error) => {
@@ -117,6 +119,11 @@ export const logInEmailPass = (e) => {
     });
 };
 
+export const getData = (callback) => {
+  // callback ======== (user) => {...}
+  firebase.auth().onAuthStateChanged(callback);
+};
+
 export const hasUserAuth = (callback) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -125,11 +132,6 @@ export const hasUserAuth = (callback) => {
       callback(false);
     }
   });
-};
-
-export const getData = (callback) => {
-  // callback ======== (user) => {...}
-  firebase.auth().onAuthStateChanged(callback);
 };
 
 export const salirApp = () => {

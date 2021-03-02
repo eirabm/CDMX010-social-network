@@ -1,21 +1,37 @@
 import { authPage } from './lib/authPages.js';
-import { perfil, newRecipePage, postsPage } from './lib/pages.js';
-import { newPost, previewIMG, getPosts } from './newPost.js';
+import { perfil, homePost, newRecipePage } from './lib/pages.js';
 import {
-  authSN, signUp, hasUserAuth, logInEmailPass, salirApp, getData,
+  authSN,
+  signUp,
+  hasUserAuth,
+  logInEmailPass,
+  salirApp,
+  getData,
 } from './lib/authScript.js';
+import { newPost, previewIMG, getPosts } from './newPost.js';
+import { perfilDescripcion } from './editPerfil.js';
 
 const mainPage = document.getElementById('root');
 const loginContainer = document.getElementById('login-container');
 const mainContainer = document.getElementById('contenido');
 
+// new post
+function createPost() {
+  const submitPost = document.getElementById('newRecipeButton');
+  submitPost.addEventListener('click', newPost);
+}
+
+// perfil editar
+function editarPerfil() {
+  const btnEnviar = document.getElementById('enviar');
+  btnEnviar.addEventListener('click', perfilDescripcion);
+}
 // salir de la aplicacion
 function salir() {
   const btnSalir = document.getElementById('salir');
   console.log(btnSalir);
   btnSalir.addEventListener('click', salirApp);
 }
-
 function initLoginEvent() {
   const socialContainer = document.getElementById('social-container');
   console.log(socialContainer);
@@ -44,6 +60,7 @@ function primeraPag() {
   signInButton.addEventListener('click', () => {
     container.classList.remove('right-panel-active');
   });
+
   signUpMobile.addEventListener('click', () => {
     container.classList.add('right-panel-active');
   });
@@ -51,12 +68,12 @@ function primeraPag() {
     container.classList.remove('right-panel-active');
   });
 }
-
 function home() {
   const navTogglerBtn = document.querySelector('.nav-toggler');
   console.log(navTogglerBtn);
   const aside = document.querySelector('.aside');
   const section = document.getElementById('navegador');
+
   navTogglerBtn.addEventListener('click', () => {
     aside.classList.toggle('open');
     navTogglerBtn.classList.toggle('open');
@@ -64,16 +81,10 @@ function home() {
   });
 }
 home();
-
-function createPost() {
-  const submitPost = document.getElementById('newRecipeButton');
-  submitPost.addEventListener('click', newPost);
-}
-
+// rutas de cada pagina del home
 const routes = {
   home: () => {
-    getPosts();
-    mainPage.innerHTML = postsPage;
+    mainPage.innerHTML = homePost;
     mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
     salir();
@@ -83,6 +94,7 @@ const routes = {
       console.log(photo);
       userPhoto.src = photo;
     });
+    getPosts();
   },
   login: () => {
     loginContainer.innerHTML = authPage;
@@ -110,10 +122,12 @@ const routes = {
       console.log(name);
       const email = user.email;
       console.log(email);
+
       userPhoto.src = photo;
       userName.innerHTML = name;
       userEmail.innerHTML = email;
     });
+    editarPerfil();
   },
   new: () => {
     mainPage.innerHTML = newRecipePage;
@@ -140,7 +154,6 @@ const renderPage = () => {
         hashPath = 'home';
       }
     }
-    console.log(hashPath);
     const page = routes[hashPath];
     page();
   });

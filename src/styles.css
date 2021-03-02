@@ -5,7 +5,7 @@
 }
 
 .none{
-    display: none;
+    display: none !important;
 }
 .login{
     font-family: 'Roboto', sans-serif;
@@ -111,7 +111,7 @@ button:focus{
 button.chage{
     background: #f5D52C;
     border-color: #f5d52c;
-  color: #7F152E;
+  color: #ffff;
 }
 .form-container{
     position: absolute;
@@ -223,7 +223,7 @@ transform: translateX(100%);
 #menu.aside{
     width: 270px;
     background-color: #7F152E;
-    border-right:1px solid #7F152E;
+    border-right:1px solid #ffffff;
     padding: 30px;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
@@ -381,12 +381,14 @@ transform: translateX(100%);
         font-weight: 700;
         margin:20px 0 8px ;
  }
-     #pages.perfil .intro img p{
+
+ #pages.perfil .intro img p{
         font-size: 16px;
         font-weight: 500;
         margin: 0;
         line-height: 22px;
         color: #504e70;
+<<<<<<< HEAD
     }
 
 .error-message-already-user {
@@ -645,3 +647,34 @@ nav img {
     width: 30px;
     height: 30px;
 }
+=======
+}
+
+.error404 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(206, 192, 194, 0.5);
+}
+
+.error404-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+
+.error404 p {
+    width: 60%;
+    font-family: 'Roboto', sans-serif;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 3%;
+    font-family: 'Cookie', cursive;
+    font-size: 2.5rem;
+}
+>>>>>>> post-add
