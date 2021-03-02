@@ -138,13 +138,11 @@ const renderPage = () => {
       window.location.hash = '#/login';
     } else {
       hashPath = clearPathname(window.location.hash);
-      debugger;
       if (!hashPath.length) {
         hashPath = 'home';
       }
     }
     console.log(hashPath);
-    debugger;
     const page = routes[hashPath];
     page();
   });
