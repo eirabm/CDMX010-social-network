@@ -1,52 +1,47 @@
 // Este es el punto de entrada de tu aplicacion
-
-import { myFunction } from './lib/index.js';
 import { authPage } from './lib/authPages.js';
+import { profilePage, newRecipePage, postsPage } from './lib/pages.js';
+import { createNewPost, previewIMG, getPosts } from './posts.js';
 import {
-  authSN, signUp, logInEmail, logOut, hasUserAuth 
+  authSN, signUp, hasUserAuth, logInEmailPass, logOut, getData,
 } from './lib/authScript.js';
-import { homePage, error404, newRecipePage, profilePage } from './lib/pages.js';
 
+// page
 const mainPage = document.getElementById('root');
-const sectionPage = document.getElementById('page-container');
 
-const routes = {
-  home: () => {
-    mainPage.innerHTML = homePage;
-    logOut();
-  },
-  
-  login: () => {
-    loginContainer.innerHTML = authPage;
-    initLoginEvent();
-    primeraPag();
-    signInInit();
-  },
-  perfil: () => {
-    mainPage.innerHTML = homePage;
-    sectionPage.innerHTML = profilePage;
-  },
+// function que limpia la url
+const clearPathname = (hash) => hash.replace('#/', '');
+
+// esta función se encarga del render
+const renderPage = () => {
+  hasUserAuth((isAuthenticated) => {
+    let hashPath = '';
+    if (!isAuthenticated) {
+      hashPath = 'login';
+      window.location.hash = '#/login';
+    } else {
+      hashPath = clearPathname(window.location.hash);
+      if (!hashPath.length) {
+        hashPath = 'home';
+      }
+    }
+    const page = routes[hashPath];
+    page();
+  });
 };
 
-mainPage.innerHTML = authPage;
+// cuando la ventana carga
+window.onload = async () => {
+  await renderPage();
+};
 
-const socialContainer = document.getElementById('social-container');
-socialContainer.addEventListener('click', authSN);
-
-const formSignUp = document.forms.signUpForm;
-formSignUp.addEventListener('submit', signUp);
-
-const formLogIn = document.forms.logInForm;
-formLogIn.addEventListener('submit', logInEmail);
-
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-
-signUpButton.addEventListener('click', () => {
-container.classList.add('right-panel-active');
-});
-signInButton.addEventListener('click', () => {
-container.classList.remove('right-panel-active');
+// cuando navega
+window.addEventListener('hashchange', async () => {
+  await renderPage();
 });
 
-myFunction();
+// salir de la aplicacion
+function logOutApp() {
+  const btnSalir = document.getElementById('salir');
+  btnSalir.addEventListener('click', logOut);
+}
