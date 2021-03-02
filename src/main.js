@@ -1,11 +1,20 @@
 import { authPage } from './lib/authPages.js';
 import { perfil, newRecipePage, postsPage } from './lib/pages.js';
-// import { errorUserAlreadyExists } from './lib/errorUserExists.js';
 import { newPost, previewIMG, getPosts } from './newPost.js';
-import { authSN, signUp, hasUserAuth, logInEmailPass} from './lib/authScript.js';
+import {
+  authSN, signUp, hasUserAuth, logInEmailPass, salirApp, getData,
+} from './lib/authScript.js';
 
 const mainPage = document.getElementById('root');
 const loginContainer = document.getElementById('login-container');
+const mainContainer = document.getElementById('contenido');
+
+// salir de la aplicacion
+function salir() {
+  const btnSalir = document.getElementById('salir');
+  console.log(btnSalir);
+  btnSalir.addEventListener('click', salirApp);
+}
 
 function initLoginEvent() {
   const socialContainer = document.getElementById('social-container');
@@ -35,7 +44,6 @@ function primeraPag() {
   signInButton.addEventListener('click', () => {
     container.classList.remove('right-panel-active');
   });
-
   signUpMobile.addEventListener('click', () => {
     container.classList.add('right-panel-active');
   });
@@ -49,7 +57,6 @@ function home() {
   console.log(navTogglerBtn);
   const aside = document.querySelector('.aside');
   const section = document.getElementById('navegador');
-
   navTogglerBtn.addEventListener('click', () => {
     aside.classList.toggle('open');
     navTogglerBtn.classList.toggle('open');
@@ -58,7 +65,7 @@ function home() {
 }
 home();
 
-function createPost () {
+function createPost() {
   const submitPost = document.getElementById('newRecipeButton');
   submitPost.addEventListener('click', newPost);
 }
@@ -67,22 +74,47 @@ const routes = {
   home: () => {
     getPosts();
     mainPage.innerHTML = postsPage;
-    mainPage.classList.remove('none');
+    mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
+    salir();
+    getData((user) => {
+      const userPhoto = document.getElementById('foto');
+      const photo = user.photoURL;
+      console.log(photo);
+      userPhoto.src = photo;
+    });
   },
-
   login: () => {
     loginContainer.innerHTML = authPage;
     initLoginEvent();
     primeraPag();
     signInInit();
+    loginContainer.classList.remove('none');
+    mainContainer.classList.add('none');
   },
   perfil: () => {
     mainPage.innerHTML = perfil;
-    mainPage.classList.remove('none');
+    mainContainer.classList.remove('none');
     loginContainer.classList.add('none');
+    // const callback = (user) => {console.log(user);}
+    getData((user) => {
+      const userPhoto = document.getElementById('fotos');
+      console.log(userPhoto);
+      const userName = document.getElementById('nombre');
+      console.log(userName);
+      const userEmail = document.getElementById('correo');
+      console.log(userEmail);
+      const photo = user.photoURL;
+      console.log(photo);
+      const name = user.displayName;
+      console.log(name);
+      const email = user.email;
+      console.log(email);
+      userPhoto.src = photo;
+      userName.innerHTML = name;
+      userEmail.innerHTML = email;
+    });
   },
-
   new: () => {
     mainPage.innerHTML = newRecipePage;
     mainPage.classList.remove('none');
@@ -96,20 +128,22 @@ const routes = {
 const clearPathname = (hash) => hash.replace('#/', '');
 
 // render function
-const renderPage = async () => {
-  const isAuthenticated = await hasUserAuth();
-  let pathname = '';
-  if (!isAuthenticated) {
-    pathname = 'login';
-  } else {
-    pathname = clearPathname(window.location.hash);
-    if (!pathname.length) {
-      pathname = 'home';
+const renderPage = () => {
+  hasUserAuth((isAuthenticated) => {
+    let hashPath = '';
+    if (!isAuthenticated) {
+      hashPath = 'login';
+      window.location.hash = '#/login';
+    } else {
+      hashPath = clearPathname(window.location.hash);
+      if (!hashPath.length) {
+        hashPath = 'home';
+      }
     }
-  }
-  console.log(pathname);
-  const page = routes[pathname];
-  page();
+    console.log(hashPath);
+    const page = routes[hashPath];
+    page();
+  });
 };
 
 // cuando navega

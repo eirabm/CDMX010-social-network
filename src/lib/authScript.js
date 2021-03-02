@@ -117,12 +117,28 @@ export const logInEmailPass = (e) => {
     });
 };
 
-export const hasUserAuth = async () => {
-  let isAuthenticated = false;
+export const hasUserAuth = (callback) => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      callback(true);
+    } else {
+      callback(false);
+    }
+  });
+};
 
-  const user = await firebase.auth();
-  if (user) {
-    isAuthenticated = true;
-  }
-  return isAuthenticated;
+export const getData = (callback) => {
+  // callback ======== (user) => {...}
+  firebase.auth().onAuthStateChanged(callback);
+};
+
+export const salirApp = () => {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    console.log('salir');
+    window.location.hash = '#/login';
+  }).catch((error) => {
+    console.log(error);
+  // An error happened.
+  });
 };
