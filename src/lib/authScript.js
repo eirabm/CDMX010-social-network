@@ -1,5 +1,8 @@
 /* eslint-disable no-undef */
-export const signUp = (e) => {
+
+function signUp(e) {
+  const formSignUp = document.getElementById('signUpForm');
+  formSignUp.addEventListener('submit', signUp);
   e.preventDefault();
 
   document.getElementById('verification').style.display = 'none';
@@ -28,9 +31,9 @@ export const signUp = (e) => {
         document.getElementById('already-user').style.display = 'block';
       }
     });
-};
+}
 
-export const logInEmail = (e) => {
+function logInEmail(e) {
   e.preventDefault();
   document.getElementById('error-verification').style.display = 'none';
   document.getElementById('user-not-found').style.display = 'none';
@@ -55,9 +58,9 @@ export const logInEmail = (e) => {
         document.getElementById('user-not-found').style.display = 'block';
       }
     });
-};
+}
 
-export const authSN = () => {
+function authSN() {
   const logInGithub = document.getElementById('logInGithub');
   logInGithub.addEventListener('click', () => {
     const provider = new firebase.auth.GithubAuthProvider();
@@ -93,6 +96,17 @@ export const authSN = () => {
         console.log(error);
       });
   });
+}
+
+export const authFunctions = () => {
+  const socialContainer = document.getElementById('social-container');
+  socialContainer.addEventListener('click', authSN);
+
+  const formSignUp = document.getElementById('signUpForm');
+  formSignUp.addEventListener('submit', signUp);
+
+  const formSignIn = document.getElementById('signInForm');
+  formSignIn.addEventListener('submit', logInEmail);
 };
 
 export const hasUserAuth = (callback) => {

@@ -1,3 +1,7 @@
+import { getData } from './lib/authScript.js';
+
+let userIMG;
+let userName;
 let recipeTitle;
 let description;
 let recipeImageUrl;
@@ -5,23 +9,31 @@ let recipeImageUrl;
 function getPostData() {
   recipeTitle = document.getElementById('NewRecipeTitle').value;
   description = document.getElementById('newRecipeDescription').value;
+
+  getData((user) => {
+    userIMG = user.photoURL;
+    userName = user.displayName;
+  });
 }
 
-export const createNewPost = (e) => {
+function createNewPost(e) {
   e.preventDefault();
+  console.log(getPostData());
   getPostData();
 
   firebase.firestore().collection('post').add({
+    user: userName,
+    userPic: userIMG,
     title: recipeTitle,
     post: description,
     image: recipeImageUrl,
   });
 };
 
-function newPost() {
+export const newPost = () => {
   const submitPost = document.getElementById('newRecipeButton');
   submitPost.addEventListener('click', createNewPost);
-}
+};
 
 export const previewIMG = () => {
   const imgInput = document.getElementById('recipe-image');
@@ -41,6 +53,8 @@ export const previewIMG = () => {
 
 function createPost(doc) {
   const postContainer = document.getElementById('post-container');
+  const getUserIMG = doc.data().userPic;
+  const getUserName = doc.data().user;
   const getRecipeTitle = doc.data().title;
   const getRecipeDescription = doc.data().post;
   const getRecipeImg = doc.data().image;
@@ -49,7 +63,8 @@ function createPost(doc) {
   const post = `
   <div class="recipe-template" id="${recipeID}">
      <div class="user-data">
-     <p>name</p>
+     <img src="${getUserIMG}">
+     <p>${getUserName}</p>
   </div>
   <div class="recipe-face front">
   <figure>
@@ -71,6 +86,7 @@ export const getPosts = () => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         createPost(doc);
+        window.location.hash = '#/';
       });
     })
     .catch((err) => {
