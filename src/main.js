@@ -1,8 +1,12 @@
 // Este es el punto de entrada de tu aplicacion
 import { authPage, logInDOM } from './lib/authPages.js';
-import { profilePage, newRecipePage, postsPage, mainPageContainer } from './lib/pages.js';
+import { 
+  profilePage, newRecipePage, postsPage, mainPageContainer, signOutPage
+} from './lib/pages.js';
 import { newPost, previewIMG, getPosts } from './posts.js';
-import { authFunctions, hasUserAuth, logOut, getData } from './lib/authScript.js';
+import { 
+  authFunctions, hasUserAuth, logOut, getData 
+} from './lib/authScript.js';
 
 // page
 const mainPage = document.getElementById('root');
@@ -37,19 +41,12 @@ window.addEventListener('hashchange', async () => {
   await renderPage();
 });
 
-// salir de la aplicacion
-function logOutApp() {
-  const btnSalir = document.getElementById('salir');
-  btnSalir.addEventListener('click', logOut);
-}
-
 const routes = {
   home: () => {
     getPosts();
     mainPage.innerHTML = mainPageContainer;
     const pageContainer = document.getElementById('pageContainer');
     pageContainer.innerHTML = postsPage;
-    salir();
     getData((user) => {
       const userPhoto = document.getElementById('foto');
       const photo = user.photoURL;
@@ -57,7 +54,7 @@ const routes = {
       userPhoto.src = photo;
     });
   },
-  
+
   login: () => {
     mainPage.innerHTML = authPage;
     logInDOM();
@@ -93,5 +90,12 @@ const routes = {
     pageContainer.innerHTML = newRecipePage;
     previewIMG();
     newPost();
+  },
+
+  logout: () => {
+    mainPage.innerHTML = mainPageContainer;
+    const pageContainer = document.getElementById('pageContainer');
+    pageContainer.innerHTML = signOutPage;
+    logOut();
   },
 };

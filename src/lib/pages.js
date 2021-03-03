@@ -77,7 +77,7 @@ export const mainPageContainer = `
             <a href="#favoritos/"><i class="fas fa-heart"></i>   Mis recetas favoritas</a>
           </li>
           <li>
-            <a href="#login/"><i class="fas fa-sign-out-alt"></i>   Salir</a>
+            <a href="#/logout"><i class="fas fa-sign-out-alt"></i>   Salir</a>
           </li>
         </ul>
         </div>
@@ -87,3 +87,17 @@ export const mainPageContainer = `
 <div id="pageContainer" class="post-container"></div>
 </div>
 `;
+
+export const signOutPage = `
+<div class="sign-out-page">
+    <figure class="app-icon">
+        <img src="https://user-images.githubusercontent.com/66543426/108759709-515f6700-7512-11eb-95fa-03b759694a1a.png" alt="">
+    </figure>
+    <p>¿Seguro que quieres salir?</p>
+  <div class="log-out-bts">
+  <button id="logOutButton"> bai </button>
+  <button id="stayButton"> ño </button>
+  </div>
+</div>
+`;
+
