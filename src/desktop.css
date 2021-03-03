@@ -4,14 +4,45 @@ font-family: 'Satisfy', cursive;
 font-family: 'Roboto', sans-serif;
 */
 
-.authPage-container {
-    flex-direction: row;
+.main-page {
+  flex-direction: row;
+}
+header{
+  display: flex;
+  flex-direction: column;
 }
 
-.authPage-header-container {
-    width: 60%;
+.logo{
+  width:311px;
 }
 
-.authPage-main-container {
-    width: 40%;
+.nav-info {
+  display: block;
+  width: 280px;
+  background-color: #7F152E;
+  border-right:1px solid #7F152E;
+  padding: 30px;
+  padding-left: 0px;
+  height: 100%;
+  position: fixed;
+}
+.nav-info a {
+  color: #fff;
+}
+
+.toggle-btn span{
+  display:none;
+}
+.nav-info li{
+  display: block;
+}
+
+.post-container{
+  top: 20px;
+  left: 400px;
+  width: 40%;
+}
+
+#sign-in-mobile, #sign-up-mobile{
+  display: none;
 }

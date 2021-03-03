@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap'); 
 /*
 font-family: 'Satisfy', cursive;
@@ -5,25 +6,24 @@ font-family: 'Roboto', sans-serif;
 */
 
 /* logIn and signUp */
-.authPage-container {
-    display: flex;
-    flex-direction: column;
-  }
 
-*{
-    box-sizing: border-box;
+.none{
+    display: none !important;
 }
-body{
-       font-family: 'Roboto', sans-serif;
-;
+.login{
+    font-family: 'Roboto', sans-serif;
+}
+
+body .container{
+    font-family: 'Roboto', sans-serif;
     background: #F6F5F7;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin:-20px 0 50px;
+    margin-left: 15%;
 }
+
 h1{
     font-weight: bold;
     margin: 0;
@@ -34,27 +34,37 @@ p{
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;
-    margin: 20px 0 30px;
+    margin: 20px 0 498*89l0px;
 }
 span{
     font-size: 12px;
+  height: 100%;
+    width: 50%;
+    text-align: center;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
 }
+
 a{
     color:#333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
 }
+
 .container{
-    background: #fff;
+    background: rgb(245, 241, 241);
     border-radius: 10px;
     box-shadow: 0 14px 28px rgb(0, 0, 0, 0.25), 0 10px 10px rgb(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
     width: 768px;
     max-width: 100%;
+    height: 480px;
     min-height: 480px;
+    box-sizing: border-box;
 }
+
 .form-container form{
     background: #fff;
     display: flex;
@@ -64,9 +74,11 @@ a{
     justify-content: center;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
 }
 .social-container{
     margin: 20px 0;
+    box-sizing: border-box;
 }
 .social-container img {
     border: 1px solid #ddd;
@@ -110,7 +122,7 @@ button:focus{
 button.chage{
     background: #f5D52C;
     border-color: #f5d52c;
-  color: #7F152E;
+  color: #ffff;
 }
 .form-container{
     position: absolute;
@@ -136,6 +148,7 @@ button.chage{
     width: 50%;
     height: 100%;
     overflow: hidden;
+    box-sizing: border-box;
     transition: transform 0.6s ease-in-out;
     z-index: 100;
 }
@@ -143,6 +156,7 @@ button.chage{
     background: #7F152E;
     color:#fff;
     position: relative;
+    box-sizing: border-box;
     left: -100%;
     height: 100%;
     width: 200%;
@@ -152,6 +166,7 @@ button.chage{
 
 .overlay-panel{
     position: absolute;
+    box-sizing: border-box;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -171,6 +186,7 @@ button.chage{
 .overlay-left{
     transform: translateX(-20%);
 }
+
 /* animation*/
 /* Move signin to the right*/
 .container.right-panel-active .sign-in-container{
@@ -197,29 +213,125 @@ transform: translateX(100%);
     transform: translateX(20%);
 }
 
-.error-message-already-user {
-    color:#7F152E;
+/* main page contenedor de páginas */
+h1{
     font-weight: bold;
-    display: none;
+    margin: 0;
+    font-family: 'Satisfy', cursive;
+}
+p{
+    font-size:14px ;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 498*89l0px;
+}
+span{
+    font-size: 12px;
+  height: 100%;
+    width: 50%;
+    text-align: center;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
 }
 
-.error-message-verification {
-    color:#7F152E;
-    font-weight: bold;
-    display: none;
+a{
+    color:#333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
 }
 
-.error-message-not-found {
-    color:#7F152E;
-    font-weight: bold;
-    display: none;
+
+header{
+    display: inline-block;
+    width: 100%;   
+    position: fixed;
 }
 
-.verification {
-    color:darkgreen;
-    font-weight: bold;
-    display: none;
+.logo {
+    background-color: #7F152E;
+    height: 100px;
+    width: 100%;
 }
+
+.logo img {
+  height: 72px;
+  margin: 20px;
+}
+
+.nav-header{
+    float: right;
+    font-family: 'Barlow', sans-serif;
+    font-weight: bold;
+}
+
+.nav-info {
+  display: none;
+}
+
+.nav-header ul{
+    margin-top: 0%;
+    list-style: none;
+}
+
+.nav-header ul li{
+    padding-left: 15px;
+    padding-right: 42px;
+      font-size: 16px;
+    color:#e3e2eb;
+    text-decoration: none;
+    line-height: 45px ;
+    border-bottom:1px solid #e8dfec;
+    text-transform: capitalize;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav li a:hover, .aside .nav li a.active{
+    color: #d7ec18;
+}
+
+.toggle-btn{
+    width: 35px;
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    cursor: pointer;
+
+}
+
+.toggle-btn span{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 2px;
+    background-color: #FFFF33;    
+    margin-bottom: 8px;
+    font-size: 15px;     
+}
+
+#toggle {
+  display: none;
+}
+
+#toggle:checked + .nav-info {
+   display: inline-block;
+   background-color: #fff;
+}
+
+.post-container {
+    position:relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 130px;
+  left: 20%;
+}
+
 
 /* Pàgina de error */
 .error404 {
@@ -250,47 +362,154 @@ transform: translateX(100%);
     font-size: 2.5rem;
 }
 
-@media (max-width: 650px) {
- .container{
-     position: inherit;
-     height: 100%;
- }
- .form-container.sign-up-container, .form-container.sign-in-container{
-     width: 100%;
- }
- .overlay-container{
-    /* height: 200px;
-     width: 100%;
-     left: 0;
-     bottom: 0;
-     top:inherit;
-     */
-     display: none;
- }
- .container.right-panel-active .sign-up-container{
-    transform: translateX(0);
- }
+/* log in and sign up error messages */
+.error-message-already-user {
+    color:#7F152E;
+    font-weight: bold;
+    display: none;
+}
+
+.error-message-verification {
+    color:#7F152E;
+    font-weight: bold;
+    display: none;
+}
+
+.error-message-not-found {
+    color:#7F152E;
+    font-weight: bold;
+    display: none;
+}
+
+.verification {
+    color:darkgreen;
+    font-weight: bold;
+    display: none;
+}
+
+/* new recipe format */
+.new-recipe-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.new-recipe-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+.new-recipe-form input {
+    width: 200px;
+    height: 20px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
+
+.new-recipe-form label {
+    font-weight: bold;
+    margin: 2.5%;
+}
+
+ .new-recipe-form textarea {
+  width : 300px;
+  height: 100px;
+  resize: none;
+  border-radius: 4px;
+  margin-bottom: 18px;
+       box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+}
+
+/* Recipe cards format */
+
+.recipe-template {
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+  width: 350px;
+ padding: 1.5%;
+    box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
+ border-radius: 8px;
+ margin: 20px;
+}
+
+.recipe-info {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+ margin-bottom: 10px;
+}
+
+.recipe-info h3 {
+  font-family: 'Satisfy', cursive;
+ align-self: center;
+ font-weight: bold;
+   font-size: 1.5rem;
+}
+
+.recipe-info textarea {
+ cursor: context-menu;
+ border: none;
+ font-family: 'Roboto', sans-serif;
+ font-size: 1rem;
+ margin-left: -2rem;
+ resize: none;
+ outline: none;
+}
+
+.front img {
+ self-align: center;
+ object-fit: cover;
+ width: 300px;
+ height: 180px;
+ border-radius: 8px;
+}
+
+.img-preview-recipe{
+    self-align: center;
+    object-fit: cover;
+    width: 300px;
+    height: 180px;
+    border-radius: 8px;
+}
+
+.user-data img{
+  border-radius: 50%;
+  width: 40px;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.user-data {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: -12px;
+  margin-left: -180px;
+}
+
+.user-data p {
+  font-weight: bold;
 }
 
 
-@media (max-width: 650px) {
- .container{
-     position: inherit;
-     height: 100%;
- }
- .form-container.sign-up-container, .form-container.sign-in-container{
-     width: 100%;
- }
- .overlay-container{
-    /* height: 200px;
-     width: 100%;
-     left: 0;
-     bottom: 0;
-     top:inherit;
-     */
-     display: none;
- }
- .container.right-panel-active .sign-up-container{
-    transform: translateX(0);
-    }
+.img-preview-recipe{
+    self-align: center;
+    object-fit: cover;
+    width: 300px;
+    height: 180px;
+    border-radius: 8px;
+}
+
+.img img{
+    width: 30px;
+    height: 30px;
 }
