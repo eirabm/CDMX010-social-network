@@ -42,3 +42,11 @@ header{
   left: 400px;
   width: 40%;
 }
+
+#sign-in-mobile {
+  display:none;
+}
+
+#sign-up-mobile {
+  display:none;
+}

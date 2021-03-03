@@ -22,7 +22,7 @@ export const newRecipePage = `
       <label for="newRecipeTitle">Escribe el título de la receta</label>
       <input type="text" name="newRecipeTitle" id="NewRecipeTitle" placeholder= "Ej. Buñuelos" required>
       <label for="newRecipeDescription">Descripción de tu receta</label>
-      <textarea name= "newRecipeDescription" id= "newRecipeDescription" placeholder= "describe brevemente tu receta" required></textarea>
+      <textarea maxlength="250" name= "newRecipeDescription" id= "newRecipeDescription" placeholder= "describe brevemente tu receta" required></textarea>
       <button id="newRecipeButton">Subir receta</button>
     </form>
 </div>

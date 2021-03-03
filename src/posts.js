@@ -1,5 +1,6 @@
 import { getData } from './lib/authScript.js';
 
+let uid;
 let userIMG;
 let userName;
 let recipeTitle;
@@ -13,15 +14,16 @@ function getPostData() {
   getData((user) => {
     userIMG = user.photoURL;
     userName = user.displayName;
+    uid = user.uid;
   });
 }
 
 function createNewPost(e) {
   e.preventDefault();
-  console.log(getPostData());
   getPostData();
 
   firebase.firestore().collection('post').add({
+    userid: uid,
     user: userName,
     userPic: userIMG,
     title: recipeTitle,
@@ -51,14 +53,27 @@ export const previewIMG = () => {
   });
 };
 
+const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
+
 function createPost(doc) {
+  getData((user) => {
+    uid = user.uid;
+  });
+
   const postContainer = document.getElementById('post-container');
+  const getUserID = doc.data().userid;
   const getUserIMG = doc.data().userPic;
   const getUserName = doc.data().user;
   const getRecipeTitle = doc.data().title;
   const getRecipeDescription = doc.data().post;
   const getRecipeImg = doc.data().image;
   const recipeID = doc.id;
+
+  function buttonErase() {
+    return `  <div>
+  <button class="btn-delete" data-id="${recipeID}">Eliminar</button>
+  </div>`;
+}
 
   const post = `
   <div class="recipe-template" id="${recipeID}">
@@ -78,6 +93,7 @@ function createPost(doc) {
 `;
 
   postContainer.innerHTML += post;
+
 }
 
 export const getPosts = () => {
