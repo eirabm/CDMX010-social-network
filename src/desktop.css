@@ -148,3 +148,11 @@ button.chage{
    max-width:100%; 
    border-radius: 50%;
 }
+
+#post-container{
+  display: flex;
+  position: absolute;
+width: 200px;
+height: 200px;
+}
+

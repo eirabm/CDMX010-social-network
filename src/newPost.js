@@ -34,6 +34,8 @@ export const previewIMG = () => {
   });
 };
 
+const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
+console.log(deletePost);
 function createPost(doc) {
   const postContainer = document.getElementById('post-container');
   const getRecipeTitle = doc.data().title;
@@ -54,10 +56,20 @@ function createPost(doc) {
   <h3> ${getRecipeTitle} </h3>
   <textarea readonly>${getRecipeDescription}</textarea>
   </div>
+  <div>
+  <button class="btn-delete" data-id="${recipeID}">Eliminar</button>
+</div>
 </div>
 `;
 
   postContainer.innerHTML += post;
+
+  const btns = document.querySelectorAll('.btn-delete');
+  btns.forEach((elem) => {
+    elem.addEventListener('click', async (e) => {
+      await deletePost(e.target.dataset.id);
+    });
+  });
 }
 
 export const getPosts = () => {
@@ -68,7 +80,7 @@ export const getPosts = () => {
         createPost(doc);
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
