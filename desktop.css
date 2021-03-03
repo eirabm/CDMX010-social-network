@@ -4,6 +4,18 @@ font-family: 'Satisfy', cursive;
 font-family: 'Roboto', sans-serif;
 */
 
+.main-page {
+  flex-direction: row;
+}
+header{
+  display: flex;
+  flex-direction: column;
+}
+
+.logo{
+  width:311px;
+}
+
 .nav-info {
   display: block;
   width: 280px;
@@ -25,6 +37,8 @@ font-family: 'Roboto', sans-serif;
   display: block;
 }
 
-.page-container{
+.post-container{
+  top: 20px;
   left: 400px;
+  width: 40%;
 }
