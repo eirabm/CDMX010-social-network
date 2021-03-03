@@ -125,12 +125,6 @@ export const getData = (callback) => {
 };
 
 export const logOut = () => {
-<<<<<<< HEAD
-  firebase.auth().signOut().then(() => {
-    window.location.hash = '#/login';
-  }).catch((error) => {
-    console.log(error);
-=======
   const logOutNow = document.getElementById('logOutButton');
   logOutNow.addEventListener('click', () => {
     firebase.auth().signOut().then(() => {
@@ -145,6 +139,5 @@ export const logOut = () => {
   const stayInApp = document.getElementById('stayButton');
   stayInApp.addEventListener('click', () => {
     window.location.hash = '#/';
->>>>>>> 3f5143b8af60ead2b6428cb74ae1b4fddc91558c
   });
 };
