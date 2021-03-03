@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
 import { authPage, logInDOM } from './lib/authPages.js';
 import {
-  profilePage, newRecipePage, postsPage, mainPageContainer,
+  profilePage, newRecipePage, postsPage, mainPageContainer, signOutPage,
 } from './lib/pages.js';
 import { newPost, previewIMG, getPosts } from './posts.js';
 import {
@@ -14,11 +14,28 @@ const mainPage = document.getElementById('root');
 // function que limpia la url
 const clearPathname = (hash) => hash.replace('#/', '');
 
-// salir de la aplicacion
-function logOutApp() {
-  const btnSalir = document.getElementById('salir');
-  btnSalir.addEventListener('click', logOut);
-}
+// esta función se encarga del render
+const renderPage = () => {
+  hasUserAuth((isAuthenticated) => {
+    let hashPath = '';
+    if (!isAuthenticated) {
+      hashPath = 'login';
+      window.location.hash = '#/login';
+    } else {
+      hashPath = clearPathname(window.location.hash);
+      if (!hashPath.length) {
+        hashPath = 'home';
+      }
+    }
+    const page = routes[hashPath];
+    page();
+  });
+};
+
+// cuando navega
+window.addEventListener('hashchange', async () => {
+  await renderPage();
+});
 
 const routes = {
   home: () => {
@@ -26,7 +43,6 @@ const routes = {
     mainPage.innerHTML = mainPageContainer;
     const pageContainer = document.getElementById('pageContainer');
     pageContainer.innerHTML = postsPage;
-    logOutApp();
     getData((user) => {
       const userPhoto = document.getElementById('foto');
       const photo = user.photoURL;
@@ -65,24 +81,13 @@ const routes = {
     previewIMG();
     newPost();
   },
-};
 
-// esta función se encarga del render
-const renderPage = () => {
-  hasUserAuth((isAuthenticated) => {
-    let hashPath = '';
-    if (!isAuthenticated) {
-      hashPath = 'login';
-      window.location.hash = '#/login';
-    } else {
-      hashPath = clearPathname(window.location.hash);
-      if (!hashPath.length) {
-        hashPath = 'home';
-      }
-    }
-    const page = routes[hashPath];
-    page();
-  });
+  logout: () => {
+    mainPage.innerHTML = mainPageContainer;
+    const pageContainer = document.getElementById('pageContainer');
+    pageContainer.innerHTML = signOutPage;
+    logOut();
+  },
 };
 
 // cuando la ventana carga
