@@ -431,6 +431,7 @@ header{
 
 .recipe-template {
     display: flex;
+    box-sizing: border-box;
    flex-direction: column;
    align-items: center;
    justify-content: center;
@@ -462,9 +463,10 @@ header{
  border: none;
  font-family: 'Roboto', sans-serif;
  font-size: 1rem;
- margin-left: -2rem;
  resize: none;
  outline: none;
+ height: 150px;
+ width: 80%;
 }
 
 .front img {
@@ -494,7 +496,7 @@ header{
   display: flex;
   margin-top: 5px;
   margin-bottom: -12px;
-  margin-left: -180px;
+  padding: 10px;
 }
 
 .user-data p {
