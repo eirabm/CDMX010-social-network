@@ -4,8 +4,8 @@ import {
   profilePage, newRecipePage, postsPage, mainPageContainer, signOutPage
 } from './lib/pages.js';
 import { newPost, previewIMG, getPosts } from './posts.js';
-import { 
-  authFunctions, hasUserAuth, logOut, getData 
+import {
+  authFunctions, hasUserAuth, logOut, getData,
 } from './lib/authScript.js';
 
 // page
@@ -50,7 +50,6 @@ const routes = {
     getData((user) => {
       const userPhoto = document.getElementById('foto');
       const photo = user.photoURL;
-      console.log(photo);
       userPhoto.src = photo;
     });
   },

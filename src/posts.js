@@ -1,38 +1,35 @@
 import { getData } from './lib/authScript.js';
 
-let uid;
 let userIMG;
 let userName;
 let recipeTitle;
 let description;
 let recipeImageUrl;
 
+async function getPostData() {
+  await (getData((user) => {
+    userIMG = user.photoURL;
+    userName = user.displayName;
+  }));
 
-function getPostData() {
   recipeTitle = document.getElementById('NewRecipeTitle').value;
   description = document.getElementById('newRecipeDescription').value;
 }
 
-function createNewPost(e) {
+async function createNewPost(e) {
   e.preventDefault();
-
-  getData((user) => {
-    userIMG = user.photoURL;
-    userName = user.displayName;
-    uid = user.uid;
-  });
-
-  getPostData();
+  await (getPostData());
 
   firebase.firestore().collection('post').add({
-    userid: uid,
     user: userName,
     userPic: userIMG,
     title: recipeTitle,
     post: description,
     image: recipeImageUrl,
   });
-};
+
+  window.location.hash = '#/';
+}
 
 export const newPost = () => {
   const submitPost = document.getElementById('newRecipeButton');
@@ -58,19 +55,13 @@ export const previewIMG = () => {
 const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
 
 function createPost(doc) {
-  getData((user) => {
-    uid = user.uid;
-  });
-
   const postContainer = document.getElementById('post-container');
-  const getUserID = doc.data().userid;
   const getUserIMG = doc.data().userPic;
   const getUserName = doc.data().user;
   const getRecipeTitle = doc.data().title;
   const getRecipeDescription = doc.data().post;
   const getRecipeImg = doc.data().image;
   const recipeID = doc.id;
-
 
   const post = `
   <div class="recipe-template" data-id="${recipeID}">
@@ -104,7 +95,7 @@ function createPost(doc) {
 export const getPosts = () => {
   firebase.firestore().collection('post')
     .onSnapshot((snapshot) => {
-      let changes = snapshot.docChanges();
+      const changes = snapshot.docChanges();
       changes.forEach((change) => {
         if (change.type == 'added') {
           createPost(change.doc);
