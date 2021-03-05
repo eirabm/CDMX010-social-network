@@ -7,35 +7,13 @@ import { newPost, previewIMG, getPosts } from './posts.js';
 import {
   authFunctions, hasUserAuth, logOut, getData,
 } from './lib/authScript.js';
+import { profileEdit } from './editProfile.js';
 
 // page
 const mainPage = document.getElementById('root');
 
 // function que limpia la url
 const clearPathname = (hash) => hash.replace('#/', '');
-
-// esta función se encarga del render
-const renderPage = () => {
-  hasUserAuth((isAuthenticated) => {
-    let hashPath = '';
-    if (!isAuthenticated) {
-      hashPath = 'login';
-      window.location.hash = '#/login';
-    } else {
-      hashPath = clearPathname(window.location.hash);
-      if (!hashPath.length) {
-        hashPath = 'home';
-      }
-    }
-    const page = routes[hashPath];
-    page();
-  });
-};
-
-// cuando navega
-window.addEventListener('hashchange', async () => {
-  await renderPage();
-});
 
 const routes = {
   home: () => {
@@ -62,6 +40,7 @@ const routes = {
     const pageContainer = document.getElementById('pageContainer');
     pageContainer.innerHTML = profilePage;
     getData((user) => {
+      console.log(user);
       const userPhoto = document.getElementById('fotos');
       const userName = document.getElementById('nombre');
       const userEmail = document.getElementById('correo');
@@ -72,6 +51,7 @@ const routes = {
       userName.innerHTML = name;
       userEmail.innerHTML = email;
     });
+    profileEdit();
   },
 
   new: () => {
@@ -90,6 +70,23 @@ const routes = {
   },
 };
 
+// esta función se encarga del render
+const renderPage = () => {
+  hasUserAuth((isAuthenticated) => {
+    let hashPath = '';
+    if (!isAuthenticated) {
+      hashPath = 'login';
+      window.location.hash = '#/login';
+    } else {
+      hashPath = clearPathname(window.location.hash);
+      if (!hashPath.length) {
+        hashPath = 'home';
+      }
+    }
+    const page = routes[hashPath];
+    page();
+  });
+};
 // cuando la ventana carga
 window.onload = async () => {
   await renderPage();
