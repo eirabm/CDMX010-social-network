@@ -102,7 +102,6 @@ async function createPost(doc) {
     <textarea readonly>${getRecipeDescription}</textarea>
     </div>
     </div>
-  <button class="btn-delete">Eliminar</button>
   <span class ="like"><i class="fas fa-heart"></i>${numberLikes > 0 ? numberLikes : '0'}</span> <span id="comment"><i class="far fa-comment"></i></span>
 </div>
 `;
