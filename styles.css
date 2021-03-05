@@ -1,4 +1,4 @@
-+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap'); 
 /*
 font-family: 'Satisfy', cursive;
@@ -505,6 +505,7 @@ header{
 
 .user-data {
   display: flex;
+  align-items: center;
   margin-top: 5px;
   margin-bottom: -12px;
   padding: 10px;
@@ -576,3 +577,91 @@ width: 90%;
   margin-left: 20px;
 }
 
+/* icono de eliminar*/
+.iconos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 97px;
+    width: 54px;
+}
+
+p.btn-delete{
+    cursor: pointer;
+}
+
+/* editar perfil */
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-active{
+    display: flex;
+}
+
+.user-profile{
+    /* outline: 1px solid blue; */
+    margin: 0 auto;
+    width: 400px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; */
+    padding: 10px;
+    max-width: 70%;
+}
+
+form{
+    max-width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    /* outline: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 10px;
+box-shadow: 0 3px 10px rgba(253, 253, 253, 0.5);
+border-radius: 2%;
+}
+
+.user-img{
+    width: 200px;
+    border-radius: 50%;
+    max-width: 70%;
+}
+
+input{
+    border-color: green;
+    width: 200px;
+    max-width: 90%;
+    font-weight: bolder;
+
+}
+
+textarea{
+    resize: none;
+    max-width: 90%;
+    border:1px solid green ;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#saveUser .save{
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    text-align: center;
+}

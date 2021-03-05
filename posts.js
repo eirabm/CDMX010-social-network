@@ -91,9 +91,13 @@ async function createPost(doc) {
      <div class="user-data">
      <img src="${getUserIMG}">
      <p>${getUserName}</p>
-    </div>
-    <div class="recipe-face front">
-    <figure>
+     <div class="iconos">
+     <p><i class="fas fa-pencil-alt"></i></p> 
+     <p class="btn-delete" data-id="${recipeID}"><i class="fas fa-trash-alt" data-id="${recipeID}"></i></p>
+     </div>
+  </div>
+  <div class="recipe-face front">
+  <figure>
     <img src="${getRecipeImg}">
     </figure>
     <div class="recipe-info">
@@ -132,9 +136,9 @@ export const getPosts = () => {
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
-        if (change.type == 'added') {
+        if (change.type === 'added') {
           createPost(change.doc);
-        } else if (change.type == 'removed') {
+        } else if (change.type === 'removed') {
           const postContainer = document.getElementById('post-container');
           const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
           post.remove();
@@ -154,9 +158,9 @@ export const getLikedPosts = async () => {
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
-        if (change.type == 'added') {
+        if (change.type === 'added') {
           createPost(change.doc);
-        } else if (change.type == 'removed') {
+        } else if (change.type === 'removed') {
           const postContainer = document.getElementById('post-container');
           const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
           post.remove();
