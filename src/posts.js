@@ -3,32 +3,36 @@ import { getData } from './lib/authScript.js';
 let userIMG;
 let userName;
 let recipeTitle;
+let vegetarian;
 let description;
 let recipeImageUrl;
 
-function getPostData() {
-  recipeTitle = document.getElementById('NewRecipeTitle').value;
-  description = document.getElementById('newRecipeDescription').value;
-
-  getData((user) => {
+async function getPostData() {
+  await (getData((user) => {
     userIMG = user.photoURL;
     userName = user.displayName;
-  });
+  }));
+
+  document.getElementById('isVegetarian').checked ? vegetarian = 'vegetarian' : vegetarian = 'not vegetarian';
+  recipeTitle = document.getElementById('NewRecipeTitle').value;
+  description = document.getElementById('newRecipeDescription').value;
 }
 
-function createNewPost(e) {
+async function createNewPost(e) {
   e.preventDefault();
-  console.log(getPostData());
-  getPostData();
+  await (getPostData());
 
   firebase.firestore().collection('post').add({
     user: userName,
     userPic: userIMG,
     title: recipeTitle,
     post: description,
+    vegetal: vegetarian,
     image: recipeImageUrl,
   });
-};
+
+  window.location.hash = '#/';
+}
 
 export const newPost = () => {
   const submitPost = document.getElementById('newRecipeButton');
@@ -51,6 +55,8 @@ export const previewIMG = () => {
   });
 };
 
+const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
+
 function createPost(doc) {
   const postContainer = document.getElementById('post-container');
   const getUserIMG = doc.data().userPic;
@@ -58,38 +64,50 @@ function createPost(doc) {
   const getRecipeTitle = doc.data().title;
   const getRecipeDescription = doc.data().post;
   const getRecipeImg = doc.data().image;
+  const itIsVegetarian = doc.data().vegetal;
   const recipeID = doc.id;
 
   const post = `
-  <div class="recipe-template" id="${recipeID}">
+  <div class="recipe-template" data-id="${recipeID}">
      <div class="user-data">
      <img src="${getUserIMG}">
      <p>${getUserName}</p>
-  </div>
-  <div class="recipe-face front">
-  <figure>
+    </div>
+    <div class="recipe-face front">
+    <figure>
     <img src="${getRecipeImg}">
-  </figure>
-  <div class="recipe-info">
-  <h3> ${getRecipeTitle} </h3>
-  <textarea readonly>${getRecipeDescription}</textarea>
-  </div>
+    </figure>
+    <div class="recipe-info">
+    <h3> ${getRecipeTitle} <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </h3> 
+    <textarea readonly>${getRecipeDescription}</textarea>
+    </div>
+    </div>
+  <button class="btn-delete">Eliminar</button>
 </div>
 `;
 
   postContainer.innerHTML += post;
+
+  const btns = document.querySelectorAll('.btn-delete');
+  btns.forEach((elem) => {
+    elem.addEventListener('click', async (e) => {
+      await deletePost(e.target.parentElement.getAttribute('data-id'));
+    });
+  });
 }
 
 export const getPosts = () => {
   firebase.firestore().collection('post')
-    .get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        createPost(doc);
-        window.location.hash = '#/';
+    .onSnapshot((snapshot) => {
+      const changes = snapshot.docChanges();
+      changes.forEach((change) => {
+        if (change.type == 'added') {
+          createPost(change.doc);
+        } else if (change.type == 'removed') {
+          const postContainer = document.getElementById('post-container');
+          const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
+          post.remove();
+        }
       });
-    })
-    .catch((err) => {
-      console.log(err);
     });
 };

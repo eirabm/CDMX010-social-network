@@ -392,6 +392,7 @@ header{
 .new-recipe-container {
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
@@ -427,10 +428,23 @@ header{
        box-shadow: 0 3px 10px rgba(100, 100, 100, 0.5);
 }
 
+.new-recipe-form .vegetarian {
+    font-weight: normal;
+    box-shadow: none;
+    width: unset;
+}
+
+.new-recipe-form .vegetarian input {
+    cursor: pointer;
+    top: 5px;
+    background-color: #eee;
+}
+
 /* Recipe cards format */
 
 .recipe-template {
     display: flex;
+    box-sizing: border-box;
    flex-direction: column;
    align-items: center;
    justify-content: center;
@@ -462,13 +476,13 @@ header{
  border: none;
  font-family: 'Roboto', sans-serif;
  font-size: 1rem;
- margin-left: -2rem;
  resize: none;
  outline: none;
+ height: 150px;
+ width: 80%;
 }
 
 .front img {
- self-align: center;
  object-fit: cover;
  width: 300px;
  height: 180px;
@@ -476,7 +490,6 @@ header{
 }
 
 .img-preview-recipe{
-    self-align: center;
     object-fit: cover;
     width: 300px;
     height: 180px;
@@ -494,7 +507,7 @@ header{
   display: flex;
   margin-top: 5px;
   margin-bottom: -12px;
-  margin-left: -180px;
+  padding: 10px;
 }
 
 .user-data p {
@@ -503,11 +516,15 @@ header{
 
 
 .img-preview-recipe{
-    self-align: center;
     object-fit: cover;
     width: 300px;
     height: 180px;
     border-radius: 8px;
+}
+
+.recipe-info h3 span {
+    font-size: 1rem;
+    color: darkgreen;
 }
 
 .img img{
