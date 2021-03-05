@@ -62,6 +62,11 @@ const addLike = (postID, user) => firebase.firestore().collection('post').doc(po
     likes: firebase.firestore.FieldValue.arrayUnion(user),
   });
 
+const removeLike = (postID, user) => firebase.firestore().collection('post').doc(postID)
+  .update({
+    likes: firebase.firestore.FieldValue.arrayRemove(user),
+  });
+
 async function createPost(doc) {
   let actualUserID;
 
@@ -71,9 +76,7 @@ async function createPost(doc) {
 
   let numberLikes;
   const likes = doc.data().likes;
-
   likes !== undefined ? numberLikes = likes.length : numberLikes = '0';
-
   const postContainer = document.getElementById('post-container');
   const getUserIMG = doc.data().userPic;
   const getUserName = doc.data().user;
@@ -99,7 +102,7 @@ async function createPost(doc) {
     </div>
     </div>
   <button class="btn-delete">Eliminar</button>
-  <span class ="like"><i class="fas fa-heart"></i>${numberLikes > 0 ? numberLikes : '0'}</span> <span id="comment"><i class="far fa-comment"></i></span>
+  <span class ="like"><i class="fas fa-heart"></i>${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>
 </div>
 `;
 
@@ -115,7 +118,11 @@ async function createPost(doc) {
   const likeBtn = document.querySelectorAll('.like');
   likeBtn.forEach((elem) => {
     elem.addEventListener('click', async (e) => {
-      await addLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+      if (likes !== undefined && likes.includes(actualUserID)) {
+        await removeLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+      } else {
+        await addLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+      }
     });
   });
 }
