@@ -6,11 +6,13 @@ let recipeTitle;
 let vegetarian;
 let description;
 let recipeImageUrl;
+let creatorUser;
 
 async function getPostData() {
   await (getData((user) => {
     userIMG = user.photoURL;
     userName = user.displayName;
+    creatorUser = user.uid;
   }));
 
   document.getElementById('isVegetarian').checked ? vegetarian = 'vegetarian' : vegetarian = 'not vegetarian';
@@ -23,6 +25,7 @@ async function createNewPost(e) {
   await (getPostData());
 
   firebase.firestore().collection('post').add({
+    userID: creatorUser,
     user: userName,
     userPic: userIMG,
     title: recipeTitle,
@@ -78,6 +81,7 @@ async function createPost(doc) {
   const likes = doc.data().likes;
   likes !== undefined ? numberLikes = likes.length : numberLikes = '0';
   const postContainer = document.getElementById('post-container');
+  const creatorID = doc.data().userID;
   const getUserIMG = doc.data().userPic;
   const getUserName = doc.data().user;
   const getRecipeTitle = doc.data().title;
@@ -86,14 +90,15 @@ async function createPost(doc) {
   const itIsVegetarian = doc.data().vegetal;
   const recipeID = doc.id;
 
+  console.log(actualUserID, creatorID);
   const post = `
   <div class="recipe-template" data-id="${recipeID}">
      <div class="user-data">
      <img src="${getUserIMG}">
      <p>${getUserName}</p>
      <div class="iconos">
-     <p><i class="fas fa-pencil-alt"></i></p> 
-     <p class="btn-delete" data-id="${recipeID}"><i class="fas fa-trash-alt" data-id="${recipeID}"></i></p>
+     ${creatorID === actualUserID ? `<p><i class="fas fa-pencil-alt"></i></p> 
+     <p class="btn-delete" data-id="${recipeID}"><i class="fas fa-trash-alt"></i></p>` : ''}
      </div>
   </div>
   <div class="recipe-face front">
@@ -105,7 +110,7 @@ async function createPost(doc) {
     <textarea readonly>${getRecipeDescription}</textarea>
     </div>
     </div>
-  <button class="btn-delete">Eliminar</button>
+  <button class="recipe-view-button">Ver receta</button>
   <span class ="like"><i class="fas fa-heart"></i>${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>
 </div>
 `;
