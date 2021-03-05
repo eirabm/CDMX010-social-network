@@ -3,6 +3,7 @@ import { getData } from './lib/authScript.js';
 let userIMG;
 let userName;
 let recipeTitle;
+let vegetarian;
 let description;
 let recipeImageUrl;
 
@@ -12,6 +13,7 @@ async function getPostData() {
     userName = user.displayName;
   }));
 
+  document.getElementById('isVegetarian').checked ? vegetarian = 'vegetarian' : vegetarian = 'not vegetarian';
   recipeTitle = document.getElementById('NewRecipeTitle').value;
   description = document.getElementById('newRecipeDescription').value;
 }
@@ -25,6 +27,7 @@ async function createNewPost(e) {
     userPic: userIMG,
     title: recipeTitle,
     post: description,
+    vegetal: vegetarian,
     image: recipeImageUrl,
   });
 
@@ -61,6 +64,7 @@ function createPost(doc) {
   const getRecipeTitle = doc.data().title;
   const getRecipeDescription = doc.data().post;
   const getRecipeImg = doc.data().image;
+  const itIsVegetarian = doc.data().vegetal;
   const recipeID = doc.id;
 
   const post = `
@@ -74,7 +78,7 @@ function createPost(doc) {
     <img src="${getRecipeImg}">
     </figure>
     <div class="recipe-info">
-    <h3> ${getRecipeTitle} </h3>
+    <h3> ${getRecipeTitle} <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </h3> 
     <textarea readonly>${getRecipeDescription}</textarea>
     </div>
     </div>
