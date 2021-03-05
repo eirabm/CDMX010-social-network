@@ -24,12 +24,31 @@ export const newRecipePage = `
       <input type="text" name="newRecipeTitle" id="NewRecipeTitle" placeholder= "Ej. Buñuelos" required>
       <label for="newRecipeDescription">Descripción de tu receta</label>
       <textarea maxlength="250" name= "newRecipeDescription" id= "newRecipeDescription" placeholder= "describe brevemente tu receta" required></textarea>
+      <label class="vegetarian"><input type="checkbox" id="isVegetarian" class="vegetarian"> Mi receta es vegetariana</label>
       <button id="newRecipeButton">Subir receta</button>
     </form>
 </div>
 `;
 
 export const postsPage = `
+<section class="home section">
+    <div class="post-page-container" id="home-usuario">
+        <div class="encabezado">
+            <div id="search" class="buscar post">
+                <span>Busca la receta que deseas</span>
+                <i class="fas fa-search"></i>
+                <input type="text" name="buscar" placeholder="Buscar">
+            </div>
+            <div class="img">
+                <img src=https://www.softzone.es/app/uploads/2018/04/guest.png alt="" class="foto perfil" id="foto">
+            </div>
+        </div>
+        <div id="post-container"></div>
+    </div>
+</section>
+`;
+
+export const likedPostsPage = `
 <section class="home section">
     <div class="post-page-container" id="home-usuario">
         <div class="encabezado">
@@ -75,7 +94,7 @@ export const mainPageContainer = `
             <a href="#/new"><i class="far fa-plus-square"></i>   Agregar receta</a>
           </li>
           <li>
-            <a href="#favoritos/"><i class="fas fa-heart"></i>   Mis recetas favoritas</a>
+            <a href="#/liked"><i class="fas fa-heart"></i>   Mis recetas favoritas</a>
           </li>
           <li>
             <a href="#/logout"><i class="fas fa-sign-out-alt"></i>   Salir</a>

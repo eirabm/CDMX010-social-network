@@ -1,9 +1,11 @@
 // Este es el punto de entrada de tu aplicacion
 import { authPage, logInDOM } from './lib/authPages.js';
 import {
-  profilePage, newRecipePage, postsPage, mainPageContainer, signOutPage,
+  profilePage, newRecipePage, postsPage, mainPageContainer, signOutPage, likedPostsPage,
 } from './lib/pages.js';
-import { newPost, previewIMG, getPosts } from './posts.js';
+import {
+  newPost, previewIMG, getPosts, getLikedPosts,
+} from './posts.js';
 import {
   authFunctions, hasUserAuth, logOut, getData,
 } from './lib/authScript.js';
@@ -24,7 +26,6 @@ const routes = {
     getData((user) => {
       const userPhoto = document.getElementById('foto');
       const photo = user.photoURL;
-      console.log(photo);
       userPhoto.src = photo;
     });
   },
@@ -60,6 +61,13 @@ const routes = {
     pageContainer.innerHTML = newRecipePage;
     previewIMG();
     newPost();
+  },
+
+  liked: () => {
+    mainPage.innerHTML = mainPageContainer;
+    const pageContainer = document.getElementById('pageContainer');
+    pageContainer.innerHTML = likedPostsPage;
+    getLikedPosts();
   },
 
   logout: () => {
