@@ -464,7 +464,8 @@ header{
  margin-bottom: 10px;
 }
 
-.recipe-info h3 {
+.recipe-info {
+    display: flex;
   font-family: 'Satisfy', cursive;
  align-self: center;
  font-weight: bold;
@@ -523,7 +524,11 @@ header{
     border-radius: 8px;
 }
 
-.recipe-info h3 span {
+.recipe-title {
+    display: flex;
+}
+
+.recipe-info span {
     font-size: 1rem;
     color: darkgreen;
 }
@@ -588,6 +593,11 @@ width: 90%;
 
 p.btn-delete{
     cursor: pointer;
+}
+
+/* función editar */
+.edit-buttons{
+    display: flex;
 }
 
 /* editar perfil */

@@ -60,6 +60,37 @@ export const previewIMG = () => {
 
 const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
 
+const editPost = (id) => {
+  const recipes = document.getElementById('post-container');
+  const post = recipes.querySelector(`[data-id=${id}]`);
+
+  const editedTitle = post.querySelector('[id=recipeTitle]');
+  const editedDescription = post.querySelector('[id=recipeDescription]');
+
+  editedTitle.contentEditable = true; editedTitle.style.border = '1.5px solid black';
+  editedDescription.removeAttribute('readonly'); editedDescription.style.border = '1.5px solid black';
+
+  const saveNewDataBtn = post.querySelector('[id=saveChanges]');
+  saveNewDataBtn.addEventListener('click', () => {
+    const editedTitleValue = document.getElementsByTagName('h3')[0].innerHTML;
+    const editedDescriptionValue = editedDescription.value;
+    console.log(editedTitleValue, editedDescriptionValue);
+
+    console.log(editedTitleValue, editedDescriptionValue);
+
+    firebase.firestore().collection('post').doc(id)
+      .update({
+        title: editedTitleValue,
+        post: editedDescriptionValue,
+      })
+  });
+
+  const cancel = document.getElementById('cancelChanges');
+  cancel.addEventListener('click', () => {
+    document.getElementById(id).reset();
+  });
+};
+
 const addLike = (postID, user) => firebase.firestore().collection('post').doc(postID)
   .update({
     likes: firebase.firestore.FieldValue.arrayUnion(user),
@@ -90,15 +121,14 @@ async function createPost(doc) {
   const itIsVegetarian = doc.data().vegetal;
   const recipeID = doc.id;
 
-  console.log(actualUserID, creatorID);
   const post = `
   <div class="recipe-template" data-id="${recipeID}">
      <div class="user-data">
      <img src="${getUserIMG}">
      <p>${getUserName}</p>
      <div class="iconos">
-     ${creatorID === actualUserID ? `<p><i class="fas fa-pencil-alt"></i></p> 
-     <p class="btn-delete" data-id="${recipeID}"><i class="fas fa-trash-alt"></i></p>` : ''}
+     ${creatorID === actualUserID ? `<p class="btn-edit"><i class="fas fa-pencil-alt"></i></p> 
+     <p class="btn-delete"><i class="fas fa-trash-alt"></i></p>` : ''}
      </div>
   </div>
   <div class="recipe-face front">
@@ -106,21 +136,29 @@ async function createPost(doc) {
     <img src="${getRecipeImg}">
     </figure>
     <div class="recipe-info">
-    <h3> ${getRecipeTitle} <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </h3> 
-    <textarea readonly>${getRecipeDescription}</textarea>
+    <div id="recipeTitle"> <h3> ${getRecipeTitle}</h3> <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </div> 
+    <textarea id="recipeDescription" readonly>${getRecipeDescription}</textarea>
     </div>
     </div>
-  <button class="recipe-view-button">Ver receta</button>
+    <div class="edit-buttons"><button class="edit-recipe" id="saveChanges">Guardar cambios</button><button class="edit-recipe" id="cancelChanges">cancelar</button></div>
   <span class ="like"><i class="fas fa-heart"></i>${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>
+  <button class="recipe-view-button">Ver receta</button>
 </div>
 `;
 
   postContainer.innerHTML += post;
 
-  const btns = document.querySelectorAll('.btn-delete');
-  btns.forEach((elem) => {
+  const btnsDelete = document.querySelectorAll('.btn-delete');
+  btnsDelete.forEach((elem) => {
     elem.addEventListener('click', async (e) => {
-      await deletePost(e.target.parentElement.getAttribute('data-id'));
+      await deletePost(e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id'));
+    });
+  });
+
+  const btnsEdit = document.querySelectorAll('.btn-edit');
+  btnsEdit.forEach((elem) => {
+    elem.addEventListener('click', async(e) => {
+      await editPost(e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id'));
     });
   });
 
@@ -141,7 +179,13 @@ export const getPosts = () => {
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
+        console.log(change.type);
         if (change.type === 'added') {
+          createPost(change.doc);
+        } else if (change.type === 'modified') {
+          const postContainer = document.getElementById('post-container');
+          const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
+          post.remove();
           createPost(change.doc);
         } else if (change.type === 'removed') {
           const postContainer = document.getElementById('post-container');
