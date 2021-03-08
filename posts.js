@@ -1,4 +1,5 @@
 import { getData } from './lib/authScript.js';
+import { editPost } from './lib/postFunctions.js';
 
 let userIMG;
 let userName;
@@ -60,37 +61,6 @@ export const previewIMG = () => {
 
 const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
 
-const editPost = (id) => {
-  const recipes = document.getElementById('post-container');
-  const post = recipes.querySelector(`[data-id=${id}]`);
-
-  const editedTitle = post.querySelector('[id=recipeTitle]');
-  const editedDescription = post.querySelector('[id=recipeDescription]');
-
-  editedTitle.contentEditable = true; editedTitle.style.border = '1.5px solid black';
-  editedDescription.removeAttribute('readonly'); editedDescription.style.border = '1.5px solid black';
-
-  const saveNewDataBtn = post.querySelector('[id=saveChanges]');
-  saveNewDataBtn.addEventListener('click', () => {
-    const editedTitleValue = document.getElementsByTagName('h3')[0].innerHTML;
-    const editedDescriptionValue = editedDescription.value;
-    console.log(editedTitleValue, editedDescriptionValue);
-
-    console.log(editedTitleValue, editedDescriptionValue);
-
-    firebase.firestore().collection('post').doc(id)
-      .update({
-        title: editedTitleValue,
-        post: editedDescriptionValue,
-      })
-  });
-
-  const cancel = document.getElementById('cancelChanges');
-  cancel.addEventListener('click', () => {
-    document.getElementById(id).reset();
-  });
-};
-
 const addLike = (postID, user) => firebase.firestore().collection('post').doc(postID)
   .update({
     likes: firebase.firestore.FieldValue.arrayUnion(user),
@@ -136,13 +106,12 @@ async function createPost(doc) {
     <img src="${getRecipeImg}">
     </figure>
     <div class="recipe-info">
-    <div id="recipeTitle"> <h3> ${getRecipeTitle}</h3> <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </div> 
+    <div class="recipe-title"> <h3 id="recipeTitle"> ${getRecipeTitle} </h3> <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </div>
     <textarea id="recipeDescription" readonly>${getRecipeDescription}</textarea>
     </div>
     </div>
     <div class="edit-buttons"><button class="edit-recipe" id="saveChanges">Guardar cambios</button><button class="edit-recipe" id="cancelChanges">cancelar</button></div>
-  <span class ="like"><i class="fas fa-heart"></i>${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>
-  <button class="recipe-view-button">Ver receta</button>
+  <div class="bottom-icons"> <span class ="like"><i class="fas fa-heart" style="${likes.includes(`${actualUserID}`) ? 'color:red' : 'color:gray'}"></i>   ${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>   0 </div>
 </div>
 `;
 
@@ -166,9 +135,9 @@ async function createPost(doc) {
   likeBtn.forEach((elem) => {
     elem.addEventListener('click', async (e) => {
       if (likes !== undefined && likes.includes(actualUserID)) {
-        await removeLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+        await removeLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
       } else {
-        await addLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+        await addLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
       }
     });
   });
