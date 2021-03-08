@@ -1,4 +1,5 @@
 import { getData } from './lib/authScript.js';
+import { editPost } from './lib/postFunctions.js';
 
 let userIMG;
 let userName;
@@ -90,15 +91,14 @@ async function createPost(doc) {
   const itIsVegetarian = doc.data().vegetal;
   const recipeID = doc.id;
 
-  console.log(actualUserID, creatorID);
   const post = `
   <div class="recipe-template" data-id="${recipeID}">
      <div class="user-data">
      <img src="${getUserIMG}">
      <p>${getUserName}</p>
      <div class="iconos">
-     ${creatorID === actualUserID ? `<p><i class="fas fa-pencil-alt"></i></p> 
-     <p class="btn-delete" data-id="${recipeID}"><i class="fas fa-trash-alt"></i></p>` : ''}
+     ${creatorID === actualUserID ? `<p class="btn-edit"><i class="fas fa-pencil-alt"></i></p> 
+     <p class="btn-delete"><i class="fas fa-trash-alt"></i></p>` : ''}
      </div>
   </div>
   <div class="recipe-face front">
@@ -106,21 +106,28 @@ async function createPost(doc) {
     <img src="${getRecipeImg}">
     </figure>
     <div class="recipe-info">
-    <h3> ${getRecipeTitle} <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </h3> 
-    <textarea readonly>${getRecipeDescription}</textarea>
+    <div class="recipe-title"> <h3 id="recipeTitle"> ${getRecipeTitle} </h3> <span>${itIsVegetarian === 'vegetarian' ? `<i class="fas fa-leaf"></i>` : ''} </span> </div>
+    <textarea id="recipeDescription" readonly>${getRecipeDescription}</textarea>
     </div>
     </div>
-  <button class="recipe-view-button">Ver receta</button>
-  <span class ="like"><i class="fas fa-heart"></i>${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>
+    <div class="edit-buttons"><button class="edit-recipe" id="saveChanges">Guardar cambios</button><button class="edit-recipe" id="cancelChanges">cancelar</button></div>
+  <div class="bottom-icons"> <span class ="like"><i class="fas fa-heart" style="${likes.includes(`${actualUserID}`) ? 'color:red' : 'color:gray'}"></i>   ${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>   0 </div>
 </div>
 `;
 
   postContainer.innerHTML += post;
 
-  const btns = document.querySelectorAll('.btn-delete');
-  btns.forEach((elem) => {
+  const btnsDelete = document.querySelectorAll('.btn-delete');
+  btnsDelete.forEach((elem) => {
     elem.addEventListener('click', async (e) => {
-      await deletePost(e.target.parentElement.getAttribute('data-id'));
+      await deletePost(e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id'));
+    });
+  });
+
+  const btnsEdit = document.querySelectorAll('.btn-edit');
+  btnsEdit.forEach((elem) => {
+    elem.addEventListener('click', async(e) => {
+      await editPost(e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id'));
     });
   });
 
@@ -128,9 +135,9 @@ async function createPost(doc) {
   likeBtn.forEach((elem) => {
     elem.addEventListener('click', async (e) => {
       if (likes !== undefined && likes.includes(actualUserID)) {
-        await removeLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+        await removeLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
       } else {
-        await addLike(e.target.parentElement.parentElement.getAttribute('data-id'), actualUserID);
+        await addLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
       }
     });
   });
@@ -141,7 +148,13 @@ export const getPosts = () => {
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
+        console.log(change.type);
         if (change.type === 'added') {
+          createPost(change.doc);
+        } else if (change.type === 'modified') {
+          const postContainer = document.getElementById('post-container');
+          const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
+          post.remove();
           createPost(change.doc);
         } else if (change.type === 'removed') {
           const postContainer = document.getElementById('post-container');
