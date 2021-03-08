@@ -115,8 +115,8 @@ export const signOutPage = `
     </figure>
     <p>¿Seguro que quieres salir?</p>
   <div class="log-out-bts">
-  <button id="logOutButton"> bai </button>
-  <button id="stayButton"> ño </button>
+  <button id="logOutButton"> Salir </button>
+  <button id="stayButton"> cancelar </button>
   </div>
 </div>
 `;

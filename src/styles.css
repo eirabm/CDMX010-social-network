@@ -461,14 +461,28 @@ header{
  align-items: center;
  justify-content: center;
  width: 100%;
- margin-bottom: 10px;
+ margin: 6px;
 }
 
 .recipe-info h3 {
+    display: flex;
   font-family: 'Satisfy', cursive;
  align-self: center;
+ align-content: center;
  font-weight: bold;
    font-size: 1.5rem;
+   border-radius: 6px;
+
+}
+
+.recipe-title {
+    display:inline-flex;
+    vertical-align: middle;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
 }
 
 .recipe-info textarea {
@@ -478,8 +492,21 @@ header{
  font-size: 1rem;
  resize: none;
  outline: none;
- height: 150px;
+ height: 120px;
  width: 80%;
+ border-radius: 6px;
+}
+
+.recipe-template button {
+    font-size: 9px;
+    padding: 8px;
+    margin-right: 28px;
+}
+
+.recipe-template .edit-buttons {
+    justify-content: space-between;
+    display: none;
+    margin: 10px;
 }
 
 .front img {
@@ -523,9 +550,34 @@ header{
     border-radius: 8px;
 }
 
-.recipe-info h3 span {
+.recipe-info span {
     font-size: 1rem;
     color: darkgreen;
+}
+
+
+.bottom-icons {
+    display: inline-block;
+    width: 100%;
+    margin: 10px;
+    margin-left: 60px;
+    vertical-align: middle;
+}
+
+.bottom-icons span {
+    font-size: 1rem;
+    margin-left: 10px;
+    margin-bottom: -15px;
+}
+
+.bottom-icons button {
+    align-self: flex-end;
+    justify-self: flex-end;
+    float: right;
+}
+
+.recipe-template i {
+    cursor: pointer;
 }
 
 .img img{
@@ -573,7 +625,6 @@ width: 90%;
     background: #f5D52C;
     border-color: #f5d52c;
   color: #7F152E;
-  width: fit-content;
   margin-left: 20px;
 }
 
@@ -588,6 +639,11 @@ width: 90%;
 
 p.btn-delete{
     cursor: pointer;
+}
+
+/* función editar */
+.edit-buttons{
+    display: flex;
 }
 
 /* editar perfil */
