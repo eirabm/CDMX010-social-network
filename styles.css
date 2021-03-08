@@ -642,7 +642,7 @@ border-radius: 2%;
     max-width: 70%;
 }
 
-input{
+.user-profile input{
     border-color: green;
     width: 200px;
     max-width: 90%;
@@ -650,7 +650,7 @@ input{
 
 }
 
-textarea{
+.user-profile textarea{
     resize: none;
     max-width: 90%;
     border:1px solid green ;
