@@ -11,7 +11,7 @@ export const editPost = (id) => {
 
   const saveNewDataBtn = post.querySelector('[id=saveChanges]');
   saveNewDataBtn.addEventListener('click', () => {
-    const editedTitleValue = document.getElementsByTagName('h3')[0].innerHTML;
+    const editedTitleValue = post.getElementsByTagName('h3')[0].innerHTML;
     const editedDescriptionValue = editedDescription.value;
 
     firebase.firestore().collection('post').doc(id)
