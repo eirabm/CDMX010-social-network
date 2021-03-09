@@ -33,10 +33,12 @@ async function createNewPost(e) {
     post: description,
     vegetal: vegetarian,
     image: recipeImageUrl,
-  });
-
-  window.location.hash = '#/';
-}
+  }).then(() => {
+    window.location.hash = '#/';
+  })
+    .catch((error) => {
+      alert('no se ha posiso publicar la receta :( )');
+    });}
 
 export const newPost = () => {
   const submitPost = document.getElementById('newRecipeButton');
@@ -61,15 +63,30 @@ export const previewIMG = () => {
 
 const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
 
-const addLike = (postID, user) => firebase.firestore().collection('post').doc(postID)
-  .update({
-    likes: firebase.firestore.FieldValue.arrayUnion(user),
-  });
+const addLike = (postID, user) => {
+  const thisPost = firebase.firestore().collection('post').doc(postID);
 
-const removeLike = (postID, user) => firebase.firestore().collection('post').doc(postID)
-  .update({
-    likes: firebase.firestore.FieldValue.arrayRemove(user),
-  });
+  thisPost.get()
+    .then((doc) => {
+      const postLikes = doc.data().likes;
+      if (postLikes === 'undefined') {
+        thisPost.update({
+          likes: firebase.firestore.FieldValue.arrayUnion(user),
+        });
+      } else if (postLikes.includes(user)) {
+        thisPost.update({
+          likes: firebase.firestore.FieldValue.arrayRemove(user),
+        });
+      } else {
+        thisPost.update({
+          likes: firebase.firestore.FieldValue.arrayUnion(user),
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 async function createPost(doc) {
   let actualUserID;
@@ -111,7 +128,7 @@ async function createPost(doc) {
     </div>
     </div>
     <div class="edit-buttons"><button class="edit-recipe" id="saveChanges">Guardar cambios</button><button class="edit-recipe" id="cancelChanges">cancelar</button></div>
-  <div class="bottom-icons"> <span class ="like"><i class="fas fa-heart" style="${likes.includes(`${actualUserID}`) ? 'color:red' : 'color:gray'}"></i>   ${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>   0 </div>
+  <div class="bottom-icons"> <span class ="like"><i class="fas fa-heart" id="likebtn" style="${ likes ? (likes.includes(`${actualUserID}`) ? 'color:red' : '') : 'color:gray'}"></i>   ${numberLikes}</span> <span id="comment"><i class="far fa-comment"></i></span>   0 </div>
 </div>
 `;
 
@@ -126,7 +143,7 @@ async function createPost(doc) {
 
   const btnsEdit = document.querySelectorAll('.btn-edit');
   btnsEdit.forEach((elem) => {
-    elem.addEventListener('click', async(e) => {
+    elem.addEventListener('click', async (e) => {
       await editPost(e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id'));
     });
   });
@@ -134,11 +151,7 @@ async function createPost(doc) {
   const likeBtn = document.querySelectorAll('.like');
   likeBtn.forEach((elem) => {
     elem.addEventListener('click', async (e) => {
-      if (likes !== undefined && likes.includes(actualUserID)) {
-        await removeLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
-      } else {
-        await addLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
-      }
+      await addLike(e.target.parentElement.parentElement.parentElement.getAttribute('data-id'), actualUserID);
     });
   });
 }
