@@ -28,7 +28,7 @@ export function profileEdit() {
         console.log(doc.data());
         const description = doc.data().description;
 
-        if (description === 'undefined') {
+        if (description === undefined) {
           userDescription.innerHTML = '';
         } else {
           userDescription.innerHTML = description;

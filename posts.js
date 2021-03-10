@@ -1,5 +1,5 @@
 import { getData } from './lib/authScript.js';
-import { editPost } from './lib/postFunctions.js';
+import { editPost, addLike } from './lib/postFunctions.js';
 
 let userIMG;
 let userName;
@@ -62,31 +62,6 @@ export const previewIMG = () => {
 };
 
 const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
-
-const addLike = (postID, user) => {
-  const thisPost = firebase.firestore().collection('post').doc(postID);
-
-  thisPost.get()
-    .then((doc) => {
-      const postLikes = doc.data().likes;
-      if (postLikes === 'undefined') {
-        thisPost.update({
-          likes: firebase.firestore.FieldValue.arrayUnion(user),
-        });
-      } else if (postLikes.includes(user)) {
-        thisPost.update({
-          likes: firebase.firestore.FieldValue.arrayRemove(user),
-        });
-      } else {
-        thisPost.update({
-          likes: firebase.firestore.FieldValue.arrayUnion(user),
-        });
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
 
 async function createPost(doc) {
   let actualUserID;
