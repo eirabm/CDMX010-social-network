@@ -5,9 +5,11 @@ export const profilePage = `
                      <img src=https://www.softzone.es/app/uploads/2018/04/guest.png alt="" class="shadow-dark" id="fotos">
                      <h1 id="nombre">nombre</h1>
                      <p id="correo">correo</p>
-                     <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+                     <p>Agrega una descripcion</p>
+                     <textarea name="descripcion" id="descriptionProfile" readonly cols="30" rows="10"></textarea>
                      <br>
                      <button id="editProfile">Editar</button>
+                     <button id="saveProfile">Editar</button>
                  </div>
 </section>
 `;
@@ -120,18 +122,3 @@ export const signOutPage = `
   </div>
 </div>
 `;
-
-export const editProfile = `
-<div class="user-profile">
-        <form action="" id="editUser">
-            <img src="https://www.ibei.org/images/4611/person_box.png" alt="" id="userImg" class="user-img">
-            <label for="name" class="user-name">Nombre:
-            </label>
-            <input type="name" id="userName" placeholder="Nombre">
-            <label for="description" class="user-description">Descripcion:
-            </label>
-            <textarea name="description" id="userDescription" cols="30" rows="10" placeholder="Descripcion sobre ti...">
-            </textarea>
-            <button class="save" id="saveUser">Guardar</button>
-        </form>
-    </div>`;
