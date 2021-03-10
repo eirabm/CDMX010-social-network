@@ -16,7 +16,7 @@ font-family: 'Roboto', sans-serif;
 
 body .container{
     font-family: 'Roboto', sans-serif;
-    background: #F6F5F7;
+    background: hsl(0deg 0% 100% / 80%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,7 +70,7 @@ a{
     display: flex;
     flex-direction: column;
     padding: 0 50px;
-    height: 100%;
+    height: 73%;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -680,7 +680,7 @@ p.btn-delete{
 
 form{
     max-width: 80%;
-    margin: 0 auto;
+    margin: 53px auto;
     background: #fff;
     /* outline: 1px solid green; */
     display: flex;
@@ -721,3 +721,47 @@ border-radius: 2%;
     cursor: pointer;
     text-align: center;
 }
+
+
+@media (max-width: 650px) {
+    .container{
+        position: inherit;
+        height: 0;
+        box-shadow: none;
+        min-height: 0;
+    }
+    .form-container.sign-up-container, .form-container.sign-in-container{
+        width: 100%;
+    }
+    .overlay-container{
+       /* height: 200px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        top:inherit;
+        */
+        display: none;
+    }
+    .container.right-panel-active .sign-up-container{
+       transform: translateX(0);
+       }
+
+     .form-container form {
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 0 40px;
+        height: 51%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-sizing: border-box;
+        margin: 125px auto;
+     }
+
+     #sign-in-mobile, #sign-up-mobile{
+    background: #f5D52C;
+    border-color: #f5d52c;
+    color: #7F152E;
+      }
+   }
