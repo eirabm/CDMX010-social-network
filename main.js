@@ -4,7 +4,7 @@ import {
   profilePage, newRecipePage, postsPage, mainPageContainer, signOutPage, likedPostsPage,
 } from './lib/pages.js';
 import {
-  newPost, previewIMG, getPosts, getLikedPosts,
+  newPost, previewIMG, getPosts, getLikedPosts, getUserPosts,
 } from './posts.js';
 import {
   authFunctions, hasUserAuth, logOut, getData,
@@ -40,18 +40,6 @@ const routes = {
     mainPage.innerHTML = mainPageContainer;
     const pageContainer = document.getElementById('pageContainer');
     pageContainer.innerHTML = profilePage;
-    getData((user) => {
-      console.log(user);
-      const userPhoto = document.getElementById('fotos');
-      const userName = document.getElementById('nombre');
-      const userEmail = document.getElementById('correo');
-      const photo = user.photoURL;
-      const name = user.displayName;
-      const email = user.email;
-      userPhoto.src = photo;
-      userName.innerHTML = name;
-      userEmail.innerHTML = email;
-    });
     profileEdit();
   },
 

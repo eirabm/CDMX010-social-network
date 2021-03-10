@@ -161,7 +161,6 @@ export const getPosts = () => {
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
-        console.log(change.type);
         if (change.type === 'added') {
           createPost(change.doc);
         } else if (change.type === 'modified') {
@@ -186,6 +185,28 @@ export const getLikedPosts = async () => {
   }));
 
   firebase.firestore().collection('post').where('likes', 'array-contains', actualUserID)
+    .onSnapshot((snapshot) => {
+      const changes = snapshot.docChanges();
+      changes.forEach((change) => {
+        if (change.type === 'added') {
+          createPost(change.doc);
+        } else if (change.type === 'removed') {
+          const postContainer = document.getElementById('post-container');
+          const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
+          post.remove();
+        }
+      });
+    });
+};
+
+export const getUserPosts = async () => {
+  let actualUserID;
+
+  await (getData((user) => {
+    actualUserID = user.uid;
+  }));
+
+  firebase.firestore().collection('post').where('userID', '==', actualUserID)
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
