@@ -1,24 +1,38 @@
-import { editProfile } from './lib/pages.js';
-
 export function profileEdit() {
   const btnEdit = document.getElementById('editProfile');
   console.log(btnEdit);
+  const nameEdit = document.getElementById('nombre');
+  console.log(nameEdit);
+  const textProfile = document.getElementById('descriptionProfile');
+  console.log(textProfile);
+  textProfile.readOnly = true; textProfile.style.border = 'none';
+  const btnSave = document.getElementById('saveProfile');
+  btnSave.style.display = 'none';
 
   btnEdit.addEventListener('click', () => {
-    const modal = document.getElementById('modals');
-    const modalContent = document.getElementById('content');
-    modalContent.innerHTML = editProfile;
-    modal.classList.toggle('modal-active');
+    console.log('hola');
+    btnEdit.style.display = 'none';
+    btnSave.style.display = 'block';
+    nameEdit.contentEditable = true; nameEdit.style.border = '1.5px solid black';
+    textProfile.removeAttribute('readonly'); textProfile.style.border = '1.5px solid black';
+  });
+  btnSave.addEventListener('click', () => {
+    const nameProfileValue = document.getElementsByTagName('h1')[0].innerHTML;
+    console.log(nameProfileValue);
+    const descripcionValueEdit = textProfile.value;
+    const user = firebase.auth().currentUser;
+    user.updateProfile({
+      displayName: nameProfileValue,
+      descripcion: descripcionValueEdit,
+    }).then(() => {
+      btnEdit.style.display = 'block';
+      btnSave.style.display = 'none';
+      nameEdit.contentEditable = false; nameEdit.style.border = 'none';
+      textProfile.readOnly = true; textProfile.style.border = 'none';
+      console.log(user.display, user.descripcion);
+    }).catch((error) => {
+      console.log(error);
+      // An error happened.
+    });
   });
 }
-
-// const user = firebase.auth().currentUser;
-
-// user.updateProfile({
-//   displayName: 'Jane Q. User',
-//   photoURL: 'https://example.com/jane-q-user/profile.jpg',
-// }).then(() => {
-//   // Update successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
