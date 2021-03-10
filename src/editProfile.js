@@ -1,38 +1,74 @@
-export function profileEdit() {
-  const btnEdit = document.getElementById('editProfile');
-  console.log(btnEdit);
-  const nameEdit = document.getElementById('nombre');
-  console.log(nameEdit);
-  const textProfile = document.getElementById('descriptionProfile');
-  console.log(textProfile);
-  textProfile.readOnly = true; textProfile.style.border = 'none';
-  const btnSave = document.getElementById('saveProfile');
-  btnSave.style.display = 'none';
+import { getData } from './lib/authScript.js';
 
+export function profileEdit() {
+  let actualUserID;
+
+  const userPhoto = document.getElementById('profilePicture');
+  const userName = document.getElementById('nombre');
+  const userEmail = document.getElementById('correo');
+  const userDescription = document.getElementById('descriptionProfile');
+
+  getData((user) => {
+    const photo = user.photoURL;
+    const name = user.displayName;
+    const email = user.email;
+    actualUserID = user.uid;
+
+    userPhoto.src = photo;
+    userName.innerHTML = name;
+    userEmail.innerHTML = email;
+  });
+
+  async function otherData() {
+    await getData;
+
+    firebase.firestore().collection('profile').doc(actualUserID)
+      .get()
+      .then((doc) => {
+        console.log(doc.data());
+        const description = doc.data().description;
+
+        if (description === undefined) {
+          userDescription.innerHTML = '';
+        } else {
+          userDescription.innerHTML = description;
+        }
+      });
+  }
+
+  otherData();
+
+  const btnEdit = document.getElementById('editProfile');
   btnEdit.addEventListener('click', () => {
-    console.log('hola');
-    btnEdit.style.display = 'none';
-    btnSave.style.display = 'block';
-    nameEdit.contentEditable = true; nameEdit.style.border = '1.5px solid black';
-    textProfile.removeAttribute('readonly'); textProfile.style.border = '1.5px solid black';
+    userName.contentEditable = true; userName.style.border = '1.5px solid black';
+    userDescription.removeAttribute('readonly'); userDescription.style.border = '1.5px solid black';
+    document.querySelector('.edit-buttons').style.display = 'block';
   });
-  btnSave.addEventListener('click', () => {
+
+  const saveChangesBtn = document.getElementById('saveChanges');
+  saveChangesBtn.addEventListener('click', () => {
     const nameProfileValue = document.getElementsByTagName('h1')[0].innerHTML;
-    console.log(nameProfileValue);
-    const descripcionValueEdit = textProfile.value;
-    const user = firebase.auth().currentUser;
-    user.updateProfile({
-      displayName: nameProfileValue,
-      descripcion: descripcionValueEdit,
-    }).then(() => {
-      btnEdit.style.display = 'block';
-      btnSave.style.display = 'none';
-      nameEdit.contentEditable = false; nameEdit.style.border = 'none';
-      textProfile.readOnly = true; textProfile.style.border = 'none';
-      console.log(user.display, user.descripcion);
-    }).catch((error) => {
-      console.log(error);
-      // An error happened.
-    });
+    firebase.auth().currentUser
+      .updateProfile({
+        displayName: nameProfileValue,
+      }).then(() => {
+        const descriptionValue = userDescription.value;
+        console.log(descriptionValue);
+        firebase.firestore().collection('profile').doc(actualUserID)
+          .set({
+            description: descriptionValue,
+          });
+      }).then(() => {
+        userName.contentEditable = false; userName.style.border = 'none';
+        userDescription.readOnly = true; userDescription.style.border = 'none';
+        document.querySelector('.edit-buttons').style.display = 'none';
+      });
   });
+
+  const deleteChangesBtn = document.getElementById('cancelChanges');
+  deleteChangesBtn.addEventListener('click', () => {
+    userName.contentEditable = false; userName.style.border = 'none';
+    userDescription.readOnly = true; userDescription.style.border = 'none';
+    document.querySelector('.edit-buttons').style.display = 'none';
+  })
 }

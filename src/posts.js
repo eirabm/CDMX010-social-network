@@ -1,5 +1,5 @@
 import { getData } from './lib/authScript.js';
-import { editPost } from './lib/postFunctions.js';
+import { editPost, addLike } from './lib/postFunctions.js';
 
 let userIMG;
 let userName;
@@ -62,31 +62,6 @@ export const previewIMG = () => {
 };
 
 const deletePost = (id) => firebase.firestore().collection('post').doc(id).delete();
-
-const addLike = (postID, user) => {
-  const thisPost = firebase.firestore().collection('post').doc(postID);
-
-  thisPost.get()
-    .then((doc) => {
-      const postLikes = doc.data().likes;
-      if (postLikes === 'undefined') {
-        thisPost.update({
-          likes: firebase.firestore.FieldValue.arrayUnion(user),
-        });
-      } else if (postLikes.includes(user)) {
-        thisPost.update({
-          likes: firebase.firestore.FieldValue.arrayRemove(user),
-        });
-      } else {
-        thisPost.update({
-          likes: firebase.firestore.FieldValue.arrayUnion(user),
-        });
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
 
 async function createPost(doc) {
   let actualUserID;
@@ -161,7 +136,6 @@ export const getPosts = () => {
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
-        console.log(change.type);
         if (change.type === 'added') {
           createPost(change.doc);
         } else if (change.type === 'modified') {
@@ -186,6 +160,28 @@ export const getLikedPosts = async () => {
   }));
 
   firebase.firestore().collection('post').where('likes', 'array-contains', actualUserID)
+    .onSnapshot((snapshot) => {
+      const changes = snapshot.docChanges();
+      changes.forEach((change) => {
+        if (change.type === 'added') {
+          createPost(change.doc);
+        } else if (change.type === 'removed') {
+          const postContainer = document.getElementById('post-container');
+          const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
+          post.remove();
+        }
+      });
+    });
+};
+
+export const getUserPosts = async () => {
+  let actualUserID;
+
+  await (getData((user) => {
+    actualUserID = user.uid;
+  }));
+
+  firebase.firestore().collection('post').where('userID', '==', actualUserID)
     .onSnapshot((snapshot) => {
       const changes = snapshot.docChanges();
       changes.forEach((change) => {
