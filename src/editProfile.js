@@ -9,6 +9,9 @@ export function profileEdit() {
   const userDescription = document.getElementById('descriptionProfile');
 
   getData((user) => {
+    if (user.photoURL === undefined) {
+      user.photoURL = '<img src=https://www.softzone.es/app/uploads/2018/04/guest.png alt="" class="foto perfil" id="foto">';
+    }
     const photo = user.photoURL;
     const name = user.displayName;
     const email = user.email;
@@ -70,5 +73,5 @@ export function profileEdit() {
     userName.contentEditable = false; userName.style.border = 'none';
     userDescription.readOnly = true; userDescription.style.border = 'none';
     document.querySelector('.edit-buttons').style.display = 'none';
-  })
+  });
 }
