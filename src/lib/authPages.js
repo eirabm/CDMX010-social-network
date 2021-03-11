@@ -27,7 +27,7 @@ export const authPage = `
             <p class="error-message-not-found" id="user-not-found">El email o contraseña ingresados no son correctos</p>
  
     <span>o usa tu cuenta</span>
-    <input type="email"name="signInEmail" placeholder="Email" required>
+    <input type="email" name="signInEmail" placeholder="Email" required>
     <input type="password" placeholder="Password" name="signInPassword" required>
     <button type="submit" href="#/">Ingresar</button>
     <br>

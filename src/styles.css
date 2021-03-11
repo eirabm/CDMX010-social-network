@@ -744,6 +744,7 @@ p.btn-delete{
     .form-container.sign-up-container, .form-container.sign-in-container{
         width: 100%;
     }
+
     .overlay-container{
        /* height: 200px;
         width: 100%;
@@ -777,7 +778,21 @@ p.btn-delete{
     }
 
     .form-container form{
-        height: 0;
+        height: 5%;
     }
+
+    .logo{
+        top:0;
+        position: fixed;
+        display: flex;
+    }
+
+    .nav-header ul {
+        margin-top: 43%;
+    }
+
+    /* .home.section{
+        margin-top: 50px;
+    } */
 
    }
