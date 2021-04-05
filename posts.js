@@ -188,7 +188,7 @@ export const getUserPosts = async () => {
         if (change.type === 'added') {
           createPost(change.doc);
         } else if (change.type === 'removed') {
-          const postContainer = document.getElementById('post-container');
+          const postContainer = document.getElementById('my-post-container');
           const post = postContainer.querySelector(`[data-id=${change.doc.id}]`);
           post.remove();
         }

@@ -14,7 +14,7 @@ export function profileEdit() {
     const email = user.email;
     actualUserID = user.uid;
 
-    userPhoto.src = photo;
+    (photo == 'undefined' ? '' : userPhoto.src = photo)
     userName.innerHTML = name;
     userEmail.innerHTML = email;
   });
